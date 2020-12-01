@@ -1,0 +1,162 @@
+[
+    {
+        "merged": "/Users/test/AndroidStudioProjects/examples-master/lite/examples/posenet/android/app/build/intermediates/res/merged/debug/drawable-xxhdpi_ic_launcher.png.flat",
+        "source": "/Users/test/AndroidStudioProjects/examples-master/lite/examples/posenet/android/app/src/main/res/drawable-xxhdpi/ic_launcher.png"
+    },
+    {
+        "merged": "/Users/test/AndroidStudioProjects/examples-master/lite/examples/posenet/android/app/build/intermediates/res/merged/debug/mipmap-xxxhdpi_ic_launcher.png.flat",
+        "source": "/Users/test/AndroidStudioProjects/examples-master/lite/examples/posenet/android/app/src/main/res/mipmap-xxxhdpi/ic_launcher.png"
+    },
+    {
+        "merged": "/Users/test/AndroidStudioProjects/examples-master/lite/examples/posenet/android/app/build/intermediates/res/merged/debug/mipmap-hdpi_ic_launcher_round.png.flat",
+        "source": "/Users/test/AndroidStudioProjects/examples-master/lite/examples/posenet/android/app/src/main/res/mipmap-hdpi/ic_launcher_round.png"
+    },
+    {
+        "merged": "/Users/test/AndroidStudioProjects/examples-master/lite/examples/posenet/android/app/build/intermediates/res/merged/debug/drawable-xxhdpi_icn_chevron_up.png.flat",
+        "source": "/Users/test/AndroidStudioProjects/examples-master/lite/examples/posenet/android/app/src/main/res/drawable-xxhdpi/icn_chevron_up.png"
+    },
+    {
+        "merged": "/Users/test/AndroidStudioProjects/examples-master/lite/examples/posenet/android/app/build/intermediates/res/merged/debug/mipmap-anydpi-v26_ic_launcher.xml.flat",
+        "source": "/Users/test/AndroidStudioProjects/examples-master/lite/examples/posenet/android/app/src/main/res/mipmap-anydpi-v26/ic_launcher.xml"
+    },
+    {
+        "merged": "/Users/test/AndroidStudioProjects/examples-master/lite/examples/posenet/android/app/build/intermediates/res/merged/debug/layout_tfe_pn_activity_test.xml.flat",
+        "source": "/Users/test/AndroidStudioProjects/examples-master/lite/examples/posenet/android/app/src/main/res/layout/tfe_pn_activity_test.xml"
+    },
+    {
+        "merged": "/Users/test/AndroidStudioProjects/examples-master/lite/examples/posenet/android/app/build/intermediates/res/merged/debug/drawable_ic_launcher_background.xml.flat",
+        "source": "/Users/test/AndroidStudioProjects/examples-master/lite/examples/posenet/android/app/src/main/res/drawable/ic_launcher_background.xml"
+    },
+    {
+        "merged": "/Users/test/AndroidStudioProjects/examples-master/lite/examples/posenet/android/app/build/intermediates/res/merged/debug/mipmap-hdpi_ic_launcher.png.flat",
+        "source": "/Users/test/AndroidStudioProjects/examples-master/lite/examples/posenet/android/app/src/main/res/mipmap-hdpi/ic_launcher.png"
+    },
+    {
+        "merged": "/Users/test/AndroidStudioProjects/examples-master/lite/examples/posenet/android/app/build/intermediates/res/merged/debug/mipmap-xxhdpi_ic_launcher_foreground.png.flat",
+        "source": "/Users/test/AndroidStudioProjects/examples-master/lite/examples/posenet/android/app/src/main/res/mipmap-xxhdpi/ic_launcher_foreground.png"
+    },
+    {
+        "merged": "/Users/test/AndroidStudioProjects/examples-master/lite/examples/posenet/android/app/build/intermediates/res/merged/debug/drawable-xxhdpi_tfl2_logo.png.flat",
+        "source": "/Users/test/AndroidStudioProjects/examples-master/lite/examples/posenet/android/app/src/main/res/drawable-xxhdpi/tfl2_logo.png"
+    },
+    {
+        "merged": "/Users/test/AndroidStudioProjects/examples-master/lite/examples/posenet/android/app/build/intermediates/res/merged/debug/layout_tfe_pn_activity_posenet.xml.flat",
+        "source": "/Users/test/AndroidStudioProjects/examples-master/lite/examples/posenet/android/app/src/main/res/layout/tfe_pn_activity_posenet.xml"
+    },
+    {
+        "merged": "/Users/test/AndroidStudioProjects/examples-master/lite/examples/posenet/android/app/build/intermediates/res/merged/debug/drawable_action.png.flat",
+        "source": "/Users/test/AndroidStudioProjects/examples-master/lite/examples/posenet/android/app/src/main/res/drawable/action.png"
+    },
+    {
+        "merged": "/Users/test/AndroidStudioProjects/examples-master/lite/examples/posenet/android/app/build/intermediates/res/merged/debug/layout_fragment_first.xml.flat",
+        "source": "/Users/test/AndroidStudioProjects/examples-master/lite/examples/posenet/android/app/src/main/res/layout/fragment_first.xml"
+    },
+    {
+        "merged": "/Users/test/AndroidStudioProjects/examples-master/lite/examples/posenet/android/app/build/intermediates/res/merged/debug/mipmap-xhdpi_ic_launcher.png.flat",
+        "source": "/Users/test/AndroidStudioProjects/examples-master/lite/examples/posenet/android/app/src/main/res/mipmap-xhdpi/ic_launcher.png"
+    },
+    {
+        "merged": "/Users/test/AndroidStudioProjects/examples-master/lite/examples/posenet/android/app/build/intermediates/res/merged/debug/drawable-xxhdpi_icn_chevron_down.png.flat",
+        "source": "/Users/test/AndroidStudioProjects/examples-master/lite/examples/posenet/android/app/src/main/res/drawable-xxhdpi/icn_chevron_down.png"
+    },
+    {
+        "merged": "/Users/test/AndroidStudioProjects/examples-master/lite/examples/posenet/android/app/build/intermediates/res/merged/debug/layout_activity_main.xml.flat",
+        "source": "/Users/test/AndroidStudioProjects/examples-master/lite/examples/posenet/android/app/src/main/res/layout/activity_main.xml"
+    },
+    {
+        "merged": "/Users/test/AndroidStudioProjects/examples-master/lite/examples/posenet/android/app/build/intermediates/res/merged/debug/layout_fragment_second.xml.flat",
+        "source": "/Users/test/AndroidStudioProjects/examples-master/lite/examples/posenet/android/app/src/main/res/layout/fragment_second.xml"
+    },
+    {
+        "merged": "/Users/test/AndroidStudioProjects/examples-master/lite/examples/posenet/android/app/build/intermediates/res/merged/debug/drawable-hdpi_ic_launcher.png.flat",
+        "source": "/Users/test/AndroidStudioProjects/examples-master/lite/examples/posenet/android/app/src/main/res/drawable-hdpi/ic_launcher.png"
+    },
+    {
+        "merged": "/Users/test/AndroidStudioProjects/examples-master/lite/examples/posenet/android/app/build/intermediates/res/merged/debug/mipmap-mdpi_ic_action_info.png.flat",
+        "source": "/Users/test/AndroidStudioProjects/examples-master/lite/examples/posenet/android/app/src/main/res/mipmap-mdpi/ic_action_info.png"
+    },
+    {
+        "merged": "/Users/test/AndroidStudioProjects/examples-master/lite/examples/posenet/android/app/build/intermediates/res/merged/debug/mipmap-xxxhdpi_ic_launcher_foreground.png.flat",
+        "source": "/Users/test/AndroidStudioProjects/examples-master/lite/examples/posenet/android/app/src/main/res/mipmap-xxxhdpi/ic_launcher_foreground.png"
+    },
+    {
+        "merged": "/Users/test/AndroidStudioProjects/examples-master/lite/examples/posenet/android/app/build/intermediates/res/merged/debug/mipmap-xxhdpi_ic_launcher.png.flat",
+        "source": "/Users/test/AndroidStudioProjects/examples-master/lite/examples/posenet/android/app/src/main/res/mipmap-xxhdpi/ic_launcher.png"
+    },
+    {
+        "merged": "/Users/test/AndroidStudioProjects/examples-master/lite/examples/posenet/android/app/build/intermediates/res/merged/debug/mipmap-xxxhdpi_ic_launcher_round.png.flat",
+        "source": "/Users/test/AndroidStudioProjects/examples-master/lite/examples/posenet/android/app/src/main/res/mipmap-xxxhdpi/ic_launcher_round.png"
+    },
+    {
+        "merged": "/Users/test/AndroidStudioProjects/examples-master/lite/examples/posenet/android/app/build/intermediates/res/merged/debug/navigation_nav_graph.xml.flat",
+        "source": "/Users/test/AndroidStudioProjects/examples-master/lite/examples/posenet/android/app/src/main/res/navigation/nav_graph.xml"
+    },
+    {
+        "merged": "/Users/test/AndroidStudioProjects/examples-master/lite/examples/posenet/android/app/build/intermediates/res/merged/debug/mipmap-mdpi_ic_launcher_round.png.flat",
+        "source": "/Users/test/AndroidStudioProjects/examples-master/lite/examples/posenet/android/app/src/main/res/mipmap-mdpi/ic_launcher_round.png"
+    },
+    {
+        "merged": "/Users/test/AndroidStudioProjects/examples-master/lite/examples/posenet/android/app/build/intermediates/res/merged/debug/mipmap-mdpi_ic_launcher_foreground.png.flat",
+        "source": "/Users/test/AndroidStudioProjects/examples-master/lite/examples/posenet/android/app/src/main/res/mipmap-mdpi/ic_launcher_foreground.png"
+    },
+    {
+        "merged": "/Users/test/AndroidStudioProjects/examples-master/lite/examples/posenet/android/app/build/intermediates/res/merged/debug/mipmap-hdpi_ic_launcher_foreground.png.flat",
+        "source": "/Users/test/AndroidStudioProjects/examples-master/lite/examples/posenet/android/app/src/main/res/mipmap-hdpi/ic_launcher_foreground.png"
+    },
+    {
+        "merged": "/Users/test/AndroidStudioProjects/examples-master/lite/examples/posenet/android/app/build/intermediates/res/merged/debug/drawable_image.jpg.flat",
+        "source": "/Users/test/AndroidStudioProjects/examples-master/lite/examples/posenet/android/app/src/main/res/drawable/image.jpg"
+    },
+    {
+        "merged": "/Users/test/AndroidStudioProjects/examples-master/lite/examples/posenet/android/app/build/intermediates/res/merged/debug/mipmap-mdpi_ic_launcher.png.flat",
+        "source": "/Users/test/AndroidStudioProjects/examples-master/lite/examples/posenet/android/app/src/main/res/mipmap-mdpi/ic_launcher.png"
+    },
+    {
+        "merged": "/Users/test/AndroidStudioProjects/examples-master/lite/examples/posenet/android/app/build/intermediates/res/merged/debug/mipmap-hdpi_ic_action_info.png.flat",
+        "source": "/Users/test/AndroidStudioProjects/examples-master/lite/examples/posenet/android/app/src/main/res/mipmap-hdpi/ic_action_info.png"
+    },
+    {
+        "merged": "/Users/test/AndroidStudioProjects/examples-master/lite/examples/posenet/android/app/build/intermediates/res/merged/debug/drawable-anydpi-v24_ic_launcher_foreground.xml.flat",
+        "source": "/Users/test/AndroidStudioProjects/examples-master/lite/examples/posenet/android/app/build/generated/res/pngs/debug/drawable-anydpi-v24/ic_launcher_foreground.xml"
+    },
+    {
+        "merged": "/Users/test/AndroidStudioProjects/examples-master/lite/examples/posenet/android/app/build/intermediates/res/merged/debug/mipmap-xxhdpi_ic_action_info.png.flat",
+        "source": "/Users/test/AndroidStudioProjects/examples-master/lite/examples/posenet/android/app/src/main/res/mipmap-xxhdpi/ic_action_info.png"
+    },
+    {
+        "merged": "/Users/test/AndroidStudioProjects/examples-master/lite/examples/posenet/android/app/build/intermediates/res/merged/debug/drawable-mdpi_ic_launcher.png.flat",
+        "source": "/Users/test/AndroidStudioProjects/examples-master/lite/examples/posenet/android/app/src/main/res/drawable-mdpi/ic_launcher.png"
+    },
+    {
+        "merged": "/Users/test/AndroidStudioProjects/examples-master/lite/examples/posenet/android/app/build/intermediates/res/merged/debug/mipmap-xhdpi_ic_launcher_foreground.png.flat",
+        "source": "/Users/test/AndroidStudioProjects/examples-master/lite/examples/posenet/android/app/src/main/res/mipmap-xhdpi/ic_launcher_foreground.png"
+    },
+    {
+        "merged": "/Users/test/AndroidStudioProjects/examples-master/lite/examples/posenet/android/app/build/intermediates/res/merged/debug/mipmap-xhdpi_ic_launcher_round.png.flat",
+        "source": "/Users/test/AndroidStudioProjects/examples-master/lite/examples/posenet/android/app/src/main/res/mipmap-xhdpi/ic_launcher_round.png"
+    },
+    {
+        "merged": "/Users/test/AndroidStudioProjects/examples-master/lite/examples/posenet/android/app/build/intermediates/res/merged/debug/mipmap-xxhdpi_ic_launcher_round.png.flat",
+        "source": "/Users/test/AndroidStudioProjects/examples-master/lite/examples/posenet/android/app/src/main/res/mipmap-xxhdpi/ic_launcher_round.png"
+    },
+    {
+        "merged": "/Users/test/AndroidStudioProjects/examples-master/lite/examples/posenet/android/app/build/intermediates/res/merged/debug/layout_tfe_pn_activity_camera.xml.flat",
+        "source": "/Users/test/AndroidStudioProjects/examples-master/lite/examples/posenet/android/app/src/main/res/layout/tfe_pn_activity_camera.xml"
+    },
+    {
+        "merged": "/Users/test/AndroidStudioProjects/examples-master/lite/examples/posenet/android/app/build/intermediates/res/merged/debug/mipmap-xhdpi_ic_action_info.png.flat",
+        "source": "/Users/test/AndroidStudioProjects/examples-master/lite/examples/posenet/android/app/src/main/res/mipmap-xhdpi/ic_action_info.png"
+    },
+    {
+        "merged": "/Users/test/AndroidStudioProjects/examples-master/lite/examples/posenet/android/app/build/intermediates/res/merged/debug/mipmap-anydpi-v26_ic_launcher_round.xml.flat",
+        "source": "/Users/test/AndroidStudioProjects/examples-master/lite/examples/posenet/android/app/src/main/res/mipmap-anydpi-v26/ic_launcher_round.xml"
+    },
+    {
+        "merged": "/Users/test/AndroidStudioProjects/examples-master/lite/examples/posenet/android/app/build/intermediates/res/merged/debug/drawable-xxhdpi_tfl2_logo_dark.png.flat",
+        "source": "/Users/test/AndroidStudioProjects/examples-master/lite/examples/posenet/android/app/src/main/res/drawable-xxhdpi/tfl2_logo_dark.png"
+    },
+    {
+        "merged": "/Users/test/AndroidStudioProjects/examples-master/lite/examples/posenet/android/app/build/intermediates/res/merged/debug/layout_content_main.xml.flat",
+        "source": "/Users/test/AndroidStudioProjects/examples-master/lite/examples/posenet/android/app/src/main/res/layout/content_main.xml"
+    }
+]

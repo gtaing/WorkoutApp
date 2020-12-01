@@ -1,0 +1,11 @@
+org/tensorflow/lite/examples/posenet/SecondFragment.java
+ org.tensorflow.lite.examples.posenet.SecondFragment
+ org.tensorflow.lite.examples.posenet.SecondFragment$1
+org/tensorflow/lite/examples/posenet/MainActivity.java
+ org.tensorflow.lite.examples.posenet.MainActivity
+ org.tensorflow.lite.examples.posenet.MainActivity$1
+org/tensorflow/lite/examples/posenet/FirstFragment.java
+ org.tensorflow.lite.examples.posenet.FirstFragment
+ org.tensorflow.lite.examples.posenet.FirstFragment$1
+org/tensorflow/lite/examples/posenet/BuildConfig.java
+ org.tensorflow.lite.examples.posenet.BuildConfig

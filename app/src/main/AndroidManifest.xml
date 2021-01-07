@@ -15,7 +15,11 @@
             android:label="@string/title_activity_list_exercises"
             android:theme="@style/Theme.WorkoutApp.NoActionBar" />
         <activity android:name=".Exercise1Activity" />
-        <activity android:name=".MainActivity" />
+        <activity
+            android:name=".MainActivity"
+            android:theme="@style/Theme.AppCompat.DayNight.NoActionBar"
+            android:label="@string/main_activity_title"
+            />
         <activity
             android:name=".SplashScreenActivity"
             android:theme="@style/AppTheme.workoutapp">

@@ -3,9 +3,13 @@ package android.example.workoutapp;
 import android.content.Intent;
 import android.os.Bundle;
 
-import com.google.android.material.appbar.CollapsingToolbarLayout;
-import com.google.android.material.floatingactionbutton.FloatingActionButton;
-import com.google.android.material.snackbar.Snackbar;
+import com.mikepenz.materialdrawer.AccountHeader;
+import com.mikepenz.materialdrawer.AccountHeaderBuilder;
+import com.mikepenz.materialdrawer.Drawer;
+import com.mikepenz.materialdrawer.DrawerBuilder;
+import com.mikepenz.materialdrawer.model.DividerDrawerItem;
+import com.mikepenz.materialdrawer.model.PrimaryDrawerItem;
+import com.mikepenz.materialdrawer.model.interfaces.IDrawerItem;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
@@ -13,15 +17,10 @@ import androidx.appcompat.widget.Toolbar;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.AdapterView;
-import android.widget.ArrayAdapter;
 import android.widget.BaseAdapter;
-import android.widget.ImageView;
 import android.widget.ListView;
-import android.widget.Switch;
 import android.widget.TextView;
 import android.widget.Toast;
-
-import java.util.List;
 
 public class ListExercisesActivity extends AppCompatActivity {
 
@@ -29,14 +28,69 @@ public class ListExercisesActivity extends AppCompatActivity {
     String[] exerciseList = new String[] {
             "Exercise 1", "Exercise 2", "Exercise 3"};
 
+    private Drawer result;
+
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_list_exercises);
+
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
-        CollapsingToolbarLayout toolBarLayout = (CollapsingToolbarLayout) findViewById(R.id.toolbar_layout);
-        toolBarLayout.setTitle(getTitle());
+        toolbar.setTitle(getTitle());
+
+        // DrawerUtil.getDrawer(this, toolbar);
+
+        //if you want to update the items at a later time it is recommended to keep it in a variable
+        PrimaryDrawerItem item1 = new PrimaryDrawerItem().withIdentifier(1).withName("List exercises");
+        PrimaryDrawerItem item2 = new PrimaryDrawerItem().withIdentifier(2).withName("Records");
+        PrimaryDrawerItem item3 = new PrimaryDrawerItem().withIdentifier(3).withName("Programs");
+
+        AccountHeader accountHeader = new AccountHeaderBuilder()
+                .withActivity(this)
+                .withHeaderBackground(R.drawable.header_background)
+                .build();
+
+
+        //create the drawer and remember the `Drawer` result object
+         result = new DrawerBuilder()
+                .withActivity(this)
+                .withToolbar(toolbar)
+                .withAccountHeader(accountHeader)
+                .withActionBarDrawerToggle(true)
+                .withActionBarDrawerToggleAnimated(true)
+                .withCloseOnClick(true)
+                 .withSelectedItem(1)
+                .addDrawerItems(
+                        item1,
+                        new DividerDrawerItem(),
+                        item2,
+                        new DividerDrawerItem(),
+                        item3
+                )
+                .withOnDrawerItemClickListener(new Drawer.OnDrawerItemClickListener() {
+                    @Override
+                    public boolean onItemClick(View view, int position, IDrawerItem drawerItem) {
+                        Intent intent = null;
+                        if (drawerItem.getIdentifier() == 1) {
+                            // intent = new Intent(ListExercisesActivity.this, ListExercisesActivity.class);
+                        } else if (drawerItem.getIdentifier() == 2) {
+                            intent = new Intent(ListExercisesActivity.this, MainActivity.class);
+                        } else if (drawerItem.getIdentifier() == 3) {
+                            intent = new Intent(ListExercisesActivity.this, Exercise1Activity.class);
+                        }
+                        if (intent != null) {
+                            //finish();
+                            ListExercisesActivity.this.startActivity(intent);
+                            overridePendingTransition(R.anim.slide_from_right, R.anim.slide_to_left);
+                        }
+                        return false;
+                    }
+                })
+                .build();
+
+
 
         CustomAdapter customAdapter = new  CustomAdapter();
 
@@ -53,7 +107,7 @@ public class ListExercisesActivity extends AppCompatActivity {
                         break;
                     default:
                         Toast.makeText(ListExercisesActivity.this, "I am the case n° " + customAdapter.getItem(position), Toast.LENGTH_SHORT).show();
-                };
+                }
 
             }
         });
@@ -89,4 +143,15 @@ public class ListExercisesActivity extends AppCompatActivity {
             return view1;
         }
     }
+
+    @Override
+    public void onBackPressed(){
+        if (result != null && result.isDrawerOpen()){
+            result.closeDrawer();
+        } else {
+            super.onBackPressed();
+        }
+    }
+
+
 }

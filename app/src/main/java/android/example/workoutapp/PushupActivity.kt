@@ -29,6 +29,7 @@ import android.media.ImageReader
 import android.media.ImageReader.OnImageAvailableListener
 import android.media.MediaPlayer
 import android.os.Bundle
+import android.os.CountDownTimer
 import android.os.Handler
 import android.os.HandlerThread
 import android.util.Log
@@ -36,6 +37,7 @@ import android.util.Size
 import android.util.SparseIntArray
 import android.view.Surface
 import android.view.SurfaceHolder
+import android.view.View
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.content.ContextCompat
 import androidx.fragment.app.DialogFragment
@@ -183,7 +185,9 @@ class PushupActivity :  AppCompatActivity()
 
 
 
-    private var mediaPlayer: MediaPlayer? = null
+    private var musicmediaPlayer: MediaPlayer? = null
+    private var voicemediaPlayer: MediaPlayer? = null
+
     private var musicfile: Int = -1
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -210,9 +214,9 @@ class PushupActivity :  AppCompatActivity()
       }
 
       if (musicfile != -1){
-        mediaPlayer = MediaPlayer.create(this, musicfile)
-        mediaPlayer?.setOnPreparedListener{
-          mediaPlayer?.start()
+        musicmediaPlayer = MediaPlayer.create(this, musicfile)
+        musicmediaPlayer?.setOnPreparedListener{
+          musicmediaPlayer?.start()
         }
       }
 
@@ -222,6 +226,20 @@ class PushupActivity :  AppCompatActivity()
     avgFilter[this.lag - 1] = stats.mean
     stdFilter[this.lag - 1] = Math.sqrt(stats.populationVariance) // getStandardDeviation() uses sample variance (not what we want)
     stats.clear()
+
+      object : CountDownTimer(6000, 1000) {
+        override fun onTick(millisUntilFinished: Long) {
+          textView7.setText("Start in \n" + millisUntilFinished / 1000)
+        }
+
+        override fun onFinish() {
+          textView7.visibility=View.INVISIBLE;
+          voicemediaPlayer = MediaPlayer.create(this@PushupActivity, R.raw.go)
+          voicemediaPlayer?.setOnPreparedListener{
+            voicemediaPlayer?.start()
+          }
+        }
+      }.start()
   }
 
   /** [CameraDevice.StateCallback] is called when [CameraDevice] changes its state.   */
@@ -285,20 +303,20 @@ class PushupActivity :  AppCompatActivity()
   override fun onStart() {
     super.onStart()
     openCamera()
-    mediaPlayer?.start()
+    musicmediaPlayer?.start()
     posenet = Posenet(this@PushupActivity)
   }
 
   override fun onPause() {
     closeCamera()
-    mediaPlayer?.pause()
+    musicmediaPlayer?.pause()
     stopBackgroundThread()
     super.onPause()
   }
 
   override fun onDestroy() {
     super.onDestroy()
-    mediaPlayer?.stop()
+    musicmediaPlayer?.stop()
     posenet.close()
   }
 

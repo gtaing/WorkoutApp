@@ -41,6 +41,9 @@ dependencies {
     // Navigation
     implementation "com.mikepenz:materialdrawer:6.1.2"
 
+    //GraphView
+    implementation 'com.jjoe64:graphview:4.2.2'
+
 
 
 }

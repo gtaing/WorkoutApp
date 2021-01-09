@@ -82,11 +82,12 @@ public class ListExercisesActivity extends AppCompatActivity {
                     public boolean onItemClick(View view, int position, IDrawerItem drawerItem) {
                         Intent intent = null;
                         if (drawerItem.getIdentifier() == 1) {
-                            intent = new Intent(ListExercisesActivity.this, PushupDescriptionActivity.class);
+                            // intent = new Intent(ListExercisesActivity.this, PushupDescriptionActivity.class);
                         } else if (drawerItem.getIdentifier() == 2) {
-                            intent = new Intent(ListExercisesActivity.this, PushupDescriptionActivity.class);
+                            intent = new Intent(ListExercisesActivity.this, MainActivity.class);
                         } else if (drawerItem.getIdentifier() == 3) {
-                            intent = new Intent(ListExercisesActivity.this, PushupDescriptionActivity.class);
+                            //intent = new Intent(ListExercisesActivity.this, Programs.class);
+                            Toast.makeText(ListExercisesActivity.this, "Programs page on development", Toast.LENGTH_SHORT).show();
                         }
                         else if (drawerItem.getIdentifier() == 4) {
                             intent = new Intent(ListExercisesActivity.this, PreferencesActivity.class);

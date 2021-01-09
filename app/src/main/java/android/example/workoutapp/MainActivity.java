@@ -9,6 +9,7 @@ import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.jjoe64.graphview.GraphView;
 import com.jjoe64.graphview.helper.DateAsXAxisLabelFormatter;
@@ -84,7 +85,8 @@ public class MainActivity extends AppCompatActivity implements ExampleDialog.Exa
                         } else if (drawerItem.getIdentifier() == 2) {
                             // intent = new Intent(MainActivity.this, MainActivity.class);
                         } else if (drawerItem.getIdentifier() == 3) {
-                            intent = new Intent(MainActivity.this, Exercise1Activity.class);
+                            // intent = new Intent(MainActivity.this, Exercise1Activity.class);
+                            Toast.makeText(MainActivity.this, "Programs page on development", Toast.LENGTH_SHORT).show();
                         }
                         else if (drawerItem.getIdentifier() == 4) {
                             intent = new Intent(MainActivity.this, PreferencesActivity.class);

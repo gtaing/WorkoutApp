@@ -2,6 +2,7 @@
 <resources>
     <style name="AppTheme.workoutapp" parent="Theme.AppCompat.Light.NoActionBar">
         <item name="android:windowContentOverlay">@null</item>
-        <item name="elevation">0dp</item>
+        <item name="elevation">40dp</item>
     </style>
+
 </resources>

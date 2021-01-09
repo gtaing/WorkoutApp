@@ -1,6 +1,10 @@
 plugins {
     id 'com.android.application'
+
 }
+
+apply plugin: 'kotlin-android'
+apply plugin: 'kotlin-android-extensions'
 
 android {
     compileSdkVersion 30
@@ -8,7 +12,7 @@ android {
 
     defaultConfig {
         applicationId "android.example.workoutapp"
-        minSdkVersion 19
+        minSdkVersion 26
         targetSdkVersion 30
         versionCode 1
         versionName "1.0"
@@ -33,7 +37,18 @@ dependencies {
     implementation 'androidx.appcompat:appcompat:1.2.0'
     implementation 'com.google.android.material:material:1.2.1'
     implementation 'androidx.constraintlayout:constraintlayout:2.0.4'
+    implementation 'androidx.coordinatorlayout:coordinatorlayout:1.1.0'
     testImplementation 'junit:junit:4.+'
     androidTestImplementation 'androidx.test.ext:junit:1.1.2'
     androidTestImplementation 'androidx.test.espresso:espresso-core:3.3.0'
+
+    // Navigation
+    implementation "com.mikepenz:materialdrawer:6.1.2"
+
+
+    //
+    implementation 'org.apache.commons:commons-math3:3.6.1'
+    implementation project(':posenet')
+
+
 }

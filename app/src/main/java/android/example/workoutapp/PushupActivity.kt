@@ -91,7 +91,7 @@ class PushupActivity :  AppCompatActivity()
   private lateinit var posenet: Posenet
 
   /** ID of the current [CameraDevice].   */
-  private var cameraId: String? = null
+  private var cameraId: String = ""
 
   ///** A [SurfaceView] for camera preview.   */
   //private var surfaceView: SurfaceView? = null
@@ -369,8 +369,18 @@ class PushupActivity :  AppCompatActivity()
         ) {
           continue
         }
+        this.cameraId = cameraId
+      }
 
-        previewSize = Size(PREVIEW_WIDTH, PREVIEW_HEIGHT)
+      if (cameraId=="" || cameraId==null){
+        //use any camera now
+          this.cameraId = manager.cameraIdList[0]
+      }
+
+
+      val characteristics = manager.getCameraCharacteristics(this.cameraId)
+
+      previewSize = Size(PREVIEW_WIDTH, PREVIEW_HEIGHT)
 
         imageReader = ImageReader.newInstance(
           PREVIEW_WIDTH, PREVIEW_HEIGHT,
@@ -392,12 +402,14 @@ class PushupActivity :  AppCompatActivity()
         flashSupported =
           characteristics.get(CameraCharacteristics.FLASH_INFO_AVAILABLE) == true
 
-        this.cameraId = cameraId
+
 
         // We've found a viable camera and finished setting up member variables,
         // so we don't need to iterate through other available cameras.
         return
-      }
+
+
+
     } catch (e: CameraAccessException) {
       Log.e(TAG, e.toString())
     } catch (e: NullPointerException) {

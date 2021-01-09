@@ -16,4 +16,15 @@
     <string name="previous">Previous</string>
     <string name="tfe_pn_request_permission" translation_description="Request camera permission [CHAR_LIMIT=40]">This app needs camera permission.</string>
     <string name="tfe_pn_camera_error" translation_description="Error regarding camera support[CHAR_LIMIT=40]">This device doesn\'t support Camera2 API.</string>
+    <string name="height">Height</string>
+    <string name="weight">Weight</string>
+    <string name="calculateBMI">calculate BMI</string>
+    <string name="very_severely_underweight">Very severely underweight</string>
+    <string name="severely_underweight">Severely underweight</string>
+    <string name="underweight">Underweight</string>
+    <string name="normal">Normal weight</string>
+    <string name="overweight">Overweight</string>
+    <string name="obese_class_i">Obese Class I (Moderately obese)</string>
+    <string name="obese_class_ii">Obese Class II (Severely obese)</string>
+    <string name="obese_class_iii">Obese Class III (Very severely obese)</string>
 </resources>

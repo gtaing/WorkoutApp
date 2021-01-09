@@ -8,6 +8,7 @@ import android.os.Bundle;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
+import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -29,16 +30,24 @@ import org.w3c.dom.Text;
 import java.util.Calendar;
 import java.util.Date;
 
-public class MainActivity extends AppCompatActivity implements ExampleDialog.ExampleDialogListener {
+public class MainActivity extends AppCompatActivity {
 
-    private Drawer result;
+    private Drawer resultDrawer;
     private TextView userWeight;
-    private Button buttonAddWeight;
+    // private Button buttonAddWeight;
+
+    private EditText height;
+    private EditText weight;
+    private TextView result;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+
+        height = (EditText) findViewById(R.id.height);
+        weight = (EditText) findViewById(R.id.weight);
+        result = (TextView) findViewById(R.id.result);
 
         Toolbar toolbar = findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
@@ -59,7 +68,7 @@ public class MainActivity extends AppCompatActivity implements ExampleDialog.Exa
 
 
         //create the drawer and remember the `Drawer` result object
-        result = new DrawerBuilder()
+        resultDrawer = new DrawerBuilder()
                 .withActivity(this)
                 .withToolbar(toolbar)
                 .withAccountHeader(accountHeader)
@@ -100,7 +109,7 @@ public class MainActivity extends AppCompatActivity implements ExampleDialog.Exa
                 })
                 .build();
 
-        userWeight = (TextView) findViewById(R.id.userWeightTextViewID);
+/*        userWeight = (TextView) findViewById(R.id.userWeightTextViewID);
         buttonAddWeight = (Button) findViewById(R.id.addWeightBtnID);
 
         buttonAddWeight.setOnClickListener(new View.OnClickListener() {
@@ -153,18 +162,58 @@ public class MainActivity extends AppCompatActivity implements ExampleDialog.Exa
 // is not necessary
         graph.getGridLabelRenderer().setHumanRounding(false);
         graph.getViewport().setScrollable(true);
-
+*/
     }
 
-    public void openDialog(){
+/*    public void openDialog(){
         ExampleDialog exampleDialog = new ExampleDialog();
         exampleDialog.show(getSupportFragmentManager(), "example dialog");
+    }*/
+
+    public void calculateBMI(View v) {
+        String heightStr = height.getText().toString();
+        String weightStr = weight.getText().toString();
+
+        if (heightStr != null && !"".equals(heightStr)
+                && weightStr != null  &&  !"".equals(weightStr)) {
+            float heightValue = Float.parseFloat(heightStr) / 100;
+            float weightValue = Float.parseFloat(weightStr);
+
+            float bmi = weightValue / (heightValue * heightValue);
+
+            displayBMI(bmi);
+        }
+    }
+
+    private void displayBMI(float bmi) {
+        String bmiLabel = "";
+
+        if (Float.compare(bmi, 15f) <= 0) {
+            bmiLabel = getString(R.string.very_severely_underweight);
+        } else if (Float.compare(bmi, 15f) > 0  &&  Float.compare(bmi, 16f) <= 0) {
+            bmiLabel = getString(R.string.severely_underweight);
+        } else if (Float.compare(bmi, 16f) > 0  &&  Float.compare(bmi, 18.5f) <= 0) {
+            bmiLabel = getString(R.string.underweight);
+        } else if (Float.compare(bmi, 18.5f) > 0  &&  Float.compare(bmi, 25f) <= 0) {
+            bmiLabel = getString(R.string.normal);
+        } else if (Float.compare(bmi, 25f) > 0  &&  Float.compare(bmi, 30f) <= 0) {
+            bmiLabel = getString(R.string.overweight);
+        } else if (Float.compare(bmi, 30f) > 0  &&  Float.compare(bmi, 35f) <= 0) {
+            bmiLabel = getString(R.string.obese_class_i);
+        } else if (Float.compare(bmi, 35f) > 0  &&  Float.compare(bmi, 40f) <= 0) {
+            bmiLabel = getString(R.string.obese_class_ii);
+        } else {
+            bmiLabel = getString(R.string.obese_class_iii);
+        }
+
+        bmiLabel = bmi + "\n\n" + bmiLabel;
+        result.setText(bmiLabel);
     }
 
     @Override
     public void onBackPressed(){
-        if (result != null && result.isDrawerOpen()){
-            result.closeDrawer();
+        if (resultDrawer != null && resultDrawer.isDrawerOpen()){
+            resultDrawer.closeDrawer();
         } else {
             super.onBackPressed();
             overridePendingTransition(R.anim.slide_from_left, R.anim.slide_to_right);
@@ -172,8 +221,8 @@ public class MainActivity extends AppCompatActivity implements ExampleDialog.Exa
     }
 
 
-    @Override
+/*    @Override
     public void applyTexts(String weight) {
         userWeight.setText(weight);
-    }
+    }*/
 }

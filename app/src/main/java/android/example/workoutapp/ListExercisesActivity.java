@@ -46,7 +46,7 @@ public class ListExercisesActivity extends AppCompatActivity {
         PrimaryDrawerItem item1 = new PrimaryDrawerItem().withIdentifier(1).withName("List exercises");
         PrimaryDrawerItem item2 = new PrimaryDrawerItem().withIdentifier(2).withName("Records");
         PrimaryDrawerItem item3 = new PrimaryDrawerItem().withIdentifier(3).withName("Programs");
-
+        PrimaryDrawerItem item4 = new PrimaryDrawerItem().withIdentifier(4).withName("Preferences");
         AccountHeader accountHeader = new AccountHeaderBuilder()
                 .withActivity(this)
                 .withHeaderBackground(R.drawable.header_background)
@@ -67,7 +67,9 @@ public class ListExercisesActivity extends AppCompatActivity {
                         new DividerDrawerItem(),
                         item2,
                         new DividerDrawerItem(),
-                        item3
+                        item3,
+                        new DividerDrawerItem(),
+                        item4
                 )
                 .withOnDrawerItemClickListener(new Drawer.OnDrawerItemClickListener() {
                     @Override
@@ -79,6 +81,9 @@ public class ListExercisesActivity extends AppCompatActivity {
                             intent = new Intent(ListExercisesActivity.this, MainActivity.class);
                         } else if (drawerItem.getIdentifier() == 3) {
                             intent = new Intent(ListExercisesActivity.this, Exercise1Activity.class);
+                        }
+                        else if (drawerItem.getIdentifier() == 4) {
+                            intent = new Intent(ListExercisesActivity.this, PreferencesActivity.class);
                         }
                         if (intent != null) {
                             //finish();

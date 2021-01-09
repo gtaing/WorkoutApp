@@ -19,7 +19,6 @@ import com.mikepenz.materialdrawer.model.interfaces.IDrawerItem;
 
 public class MainActivity extends AppCompatActivity {
 
-    private Object Drawer;
     private Drawer result;
 
     @Override
@@ -27,7 +26,7 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
+        Toolbar toolbar = findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
         toolbar.setTitle(getTitle());
 
@@ -37,6 +36,7 @@ public class MainActivity extends AppCompatActivity {
         PrimaryDrawerItem item1 = new PrimaryDrawerItem().withIdentifier(1).withName("List exercises");
         PrimaryDrawerItem item2 = new PrimaryDrawerItem().withIdentifier(2).withName("Records");
         PrimaryDrawerItem item3 = new PrimaryDrawerItem().withIdentifier(3).withName("Programs");
+        PrimaryDrawerItem item4 = new PrimaryDrawerItem().withIdentifier(4).withName("Preferences");
 
         AccountHeader accountHeader = new AccountHeaderBuilder()
                 .withActivity(this)
@@ -58,7 +58,9 @@ public class MainActivity extends AppCompatActivity {
                         new DividerDrawerItem(),
                         item2,
                         new DividerDrawerItem(),
-                        item3
+                        item3,
+                        new DividerDrawerItem(),
+                        item4
                 )
                 .withOnDrawerItemClickListener(new Drawer.OnDrawerItemClickListener() {
                     @Override
@@ -70,6 +72,9 @@ public class MainActivity extends AppCompatActivity {
                             // intent = new Intent(MainActivity.this, MainActivity.class);
                         } else if (drawerItem.getIdentifier() == 3) {
                             intent = new Intent(MainActivity.this, Exercise1Activity.class);
+                        }
+                        else if (drawerItem.getIdentifier() == 4) {
+                            intent = new Intent(MainActivity.this, PreferencesActivity.class);
                         }
                         if (intent != null) {
                             MainActivity.this.startActivity(intent);

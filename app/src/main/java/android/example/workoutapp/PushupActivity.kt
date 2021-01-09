@@ -18,9 +18,6 @@ package android.example.workoutapp
 
 import org.apache.commons.math3.stat.descriptive.SummaryStatistics
 import android.Manifest
-import android.app.Activity
-import android.app.Activity.RESULT_OK
-import android.app.ActivityManager
 import android.app.AlertDialog
 import android.app.Dialog
 import android.content.Context
@@ -34,32 +31,25 @@ import android.media.ImageReader.OnImageAvailableListener
 import android.os.Bundle
 import android.os.Handler
 import android.os.HandlerThread
-import android.os.Process
 import android.util.Log
 import android.util.Size
 import android.util.SparseIntArray
 import android.view.*
-import android.widget.Toast
 
 import androidx.appcompat.app.AppCompatActivity
-import androidx.core.app.ActivityCompat
 import androidx.core.content.ContextCompat
 import androidx.fragment.app.DialogFragment
-import androidx.fragment.app.Fragment
-import androidx.fragment.app.FragmentManager
 import kotlinx.android.synthetic.main.tfe_pn_activity_posenet.*
-import org.tensorflow.lite.examples.posenet.REQUEST_CAMERA_PERMISSION
 import org.tensorflow.lite.examples.posenet.lib.BodyPart
 import org.tensorflow.lite.examples.posenet.lib.Person
 import org.tensorflow.lite.examples.posenet.lib.Posenet
-import java.security.AccessController.getContext
 import java.util.concurrent.Semaphore
 import java.util.concurrent.TimeUnit
 import kotlin.math.abs
 
 
 //class MainActivity : AppCompatActivity() {
-class PosenetActivity :  AppCompatActivity()
+class PushupActivity :  AppCompatActivity()
   //Fragment(),
   //ActivityCompat.OnRequestPermissionsResultCallback {
   {
@@ -198,7 +188,7 @@ class PosenetActivity :  AppCompatActivity()
 
     super.onCreate(savedInstanceState)
 
-    Log.d("posenetActivityStarted","posenetActivityStarted")
+    Log.d("PushupActivity Started","PushupActivity Started")
     setContentView(R.layout.tfe_pn_activity_posenet)
 
     // init avgFilter and stdFilter
@@ -216,15 +206,15 @@ class PosenetActivity :  AppCompatActivity()
       surfaceHolder = surfaceView.holder
 
       cameraOpenCloseLock.release()
-      this@PosenetActivity.cameraDevice = cameraDevice
+      this@PushupActivity.cameraDevice = cameraDevice
       createCameraPreviewSession()
 
       backbutton.setOnClickListener {
         val intent = Intent()
         intent.putExtra("message", "You did " + pushups.toString() + " Pushups!")
-        this@PosenetActivity.setResult(RESULT_OK, intent);
+        this@PushupActivity.setResult(RESULT_OK, intent);
 
-        this@PosenetActivity.finish()
+        this@PushupActivity.finish()
       }
     }
 
@@ -232,12 +222,12 @@ class PosenetActivity :  AppCompatActivity()
     override fun onDisconnected(cameraDevice: CameraDevice) {
       cameraOpenCloseLock.release()
       cameraDevice.close()
-      this@PosenetActivity.cameraDevice = null
+      this@PushupActivity.cameraDevice = null
     }
 
     override fun onError(cameraDevice: CameraDevice, error: Int) {
       onDisconnected(cameraDevice)
-      this@PosenetActivity.finish()
+      this@PushupActivity.finish()
     }
   }
 
@@ -270,7 +260,7 @@ class PosenetActivity :  AppCompatActivity()
   override fun onStart() {
     super.onStart()
     openCamera()
-    posenet = Posenet(this@PosenetActivity)
+    posenet = Posenet(this@PushupActivity)
   }
 
   override fun onPause() {
@@ -315,7 +305,7 @@ class PosenetActivity :  AppCompatActivity()
    * Sets up member variables related to camera.
    */
   private fun setUpCameraOutputs() {
-    val activity = this@PosenetActivity
+    val activity = this@PushupActivity
     val manager = activity.getSystemService(Context.CAMERA_SERVICE) as CameraManager
     try {
       for (cameraId in manager.cameraIdList) {
@@ -368,7 +358,7 @@ class PosenetActivity :  AppCompatActivity()
   }
 
   /**
-   * Opens the camera specified by [PosenetActivity.cameraId].
+   * Opens the camera specified by [PushupActivity.cameraId].
    */
   private fun openCamera() {
     val permissionCamera = ContextCompat.checkSelfPermission(this, Manifest.permission.CAMERA)
@@ -376,7 +366,7 @@ class PosenetActivity :  AppCompatActivity()
       requestCameraPermission()
     }
     setUpCameraOutputs()
-    val manager = this@PosenetActivity.getSystemService(Context.CAMERA_SERVICE) as CameraManager
+    val manager = this@PushupActivity.getSystemService(Context.CAMERA_SERVICE) as CameraManager
     try {
       // Wait for camera to open - 2.5 seconds is sufficient
       if (!cameraOpenCloseLock.tryAcquire(2500, TimeUnit.MILLISECONDS)) {
@@ -600,9 +590,9 @@ class PosenetActivity :  AppCompatActivity()
 
     //Count pushups
     //get line between shoulders:
-    var startChestLineX = person.keyPoints[bodyJoints[2].first.ordinal].position.x.toFloat()
+    //var startChestLineX = person.keyPoints[bodyJoints[2].first.ordinal].position.x.toFloat()
     var startChestLineY = person.keyPoints[bodyJoints[2].first.ordinal].position.y.toFloat()
-    var stopChestLineX = person.keyPoints[bodyJoints[2].second.ordinal].position.x.toFloat()
+    //var stopChestLineX = person.keyPoints[bodyJoints[2].second.ordinal].position.x.toFloat()
     var stopChestLineY = person.keyPoints[bodyJoints[2].second.ordinal].position.y.toFloat()
 
     var lineAverageY = (startChestLineY + stopChestLineY ).toDouble() / 2
@@ -845,6 +835,6 @@ class PosenetActivity :  AppCompatActivity()
     /**
      * Tag for the [Log].
      */
-    private const val TAG = "PosenetActivity"
+    private const val TAG = "PushupActivity"
   }
 }

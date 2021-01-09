@@ -11,6 +11,7 @@ import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Spinner;
+import android.widget.Toast;
 
 import com.mikepenz.materialdrawer.AccountHeader;
 import com.mikepenz.materialdrawer.AccountHeaderBuilder;
@@ -105,7 +106,7 @@ public class PreferencesActivity extends AppCompatActivity {
                 .withActionBarDrawerToggle(true)
                 .withActionBarDrawerToggleAnimated(true)
                 .withCloseOnClick(true)
-                .withSelectedItem(2)
+                .withSelectedItem(4)
                 .addDrawerItems(
                         item1,
                         new DividerDrawerItem(),
@@ -122,12 +123,13 @@ public class PreferencesActivity extends AppCompatActivity {
                         if (drawerItem.getIdentifier() == 1) {
                             intent = new Intent(PreferencesActivity.this, ListExercisesActivity.class);
                         } else if (drawerItem.getIdentifier() == 2) {
-                            // intent = new Intent(MainActivity.this, MainActivity.class);
+                            intent = new Intent(PreferencesActivity.this, MainActivity.class);
                         } else if (drawerItem.getIdentifier() == 3) {
-                            intent = new Intent(PreferencesActivity.this, Exercise1Activity.class);
+                            // intent = new Intent(PreferencesActivity.this, Exercise1Activity.class);
+                            Toast.makeText(PreferencesActivity.this, "Programs page on development", Toast.LENGTH_SHORT).show();
                         }
                         else if (drawerItem.getIdentifier() == 4) {
-                            intent = new Intent(PreferencesActivity.this, PreferencesActivity.class);
+                            // intent = new Intent(PreferencesActivity.this, PreferencesActivity.class);
                         }
                         if (intent != null) {
                             PreferencesActivity.this.startActivity(intent);

@@ -7,6 +7,8 @@
     <string name="music1">Linkin Park - In The End</string>
     <string name="music2">Linkin Park - Numb</string>
     <string name="music3">Linkin Park - What I´ve done</string>
+    <string name="nomusic">no music</string>
+
 
     <string name="next">Next</string>
     <string name="previous">Previous</string>

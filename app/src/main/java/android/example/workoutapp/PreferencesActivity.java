@@ -34,7 +34,7 @@ public class PreferencesActivity extends AppCompatActivity {
         //get the spinner from the xml.
         Spinner music_dropdown = findViewById(R.id.spinner1);
         //create a list of items for the spinner.
-        String[] items = new String[]{getString(R.string.music1), getString(R.string.music2), getString(R.string.music3)};
+        String[] items = new String[]{getString(R.string.music1), getString(R.string.music2), getString(R.string.music3), getString(R.string.nomusic)};
         //create an adapter to describe how the items are displayed, adapters are used in several places in android.
         //There are multiple variations of this, but this is the basic variant.
         ArrayAdapter<String> adapter = new ArrayAdapter<>(this, android.R.layout.simple_spinner_dropdown_item, items);
@@ -56,8 +56,11 @@ public class PreferencesActivity extends AppCompatActivity {
                     case 2:
                         editor.putString("music",getString(R.string.music3));
                         break;
+                    case 3:
+                        editor.putString("music",getString(R.string.nomusic));
+                        break;
                     default:
-                        editor.putString("music",getString(R.string.music1));
+                        editor.putString("music",getString(R.string.nomusic));
                 }
                 editor.commit();
             }
@@ -69,7 +72,7 @@ public class PreferencesActivity extends AppCompatActivity {
             }
 
         });
-
+        //get saved settings
         SharedPreferences settings = getSharedPreferences("UserInfo", 0);
         String set_music = settings.getString("music", "");
         music_dropdown.setSelection(adapter.getPosition(set_music));

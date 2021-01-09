@@ -16,7 +16,6 @@
 
 package android.example.workoutapp
 
-import org.apache.commons.math3.stat.descriptive.SummaryStatistics
 import android.Manifest
 import android.app.AlertDialog
 import android.app.Dialog
@@ -28,18 +27,20 @@ import android.hardware.camera2.*
 import android.media.Image
 import android.media.ImageReader
 import android.media.ImageReader.OnImageAvailableListener
+import android.media.MediaPlayer
 import android.os.Bundle
 import android.os.Handler
 import android.os.HandlerThread
 import android.util.Log
 import android.util.Size
 import android.util.SparseIntArray
-import android.view.*
-
+import android.view.Surface
+import android.view.SurfaceHolder
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.content.ContextCompat
 import androidx.fragment.app.DialogFragment
 import kotlinx.android.synthetic.main.tfe_pn_activity_posenet.*
+import org.apache.commons.math3.stat.descriptive.SummaryStatistics
 import org.tensorflow.lite.examples.posenet.lib.BodyPart
 import org.tensorflow.lite.examples.posenet.lib.Person
 import org.tensorflow.lite.examples.posenet.lib.Posenet
@@ -182,7 +183,8 @@ class PushupActivity :  AppCompatActivity()
 
 
 
-
+    private var mediaPlayer: MediaPlayer? = null
+    private var musicfile: Int = -1
 
     override fun onCreate(savedInstanceState: Bundle?) {
 
@@ -190,6 +192,29 @@ class PushupActivity :  AppCompatActivity()
 
     Log.d("PushupActivity Started","PushupActivity Started")
     setContentView(R.layout.tfe_pn_activity_posenet)
+
+
+    //start music
+      //get music config
+      //get saved settings
+      val settings = getSharedPreferences("UserInfo", 0)
+      val set_music = settings.getString("music", "")
+      when (set_music) {
+        getString(R.string.music1) -> musicfile = R.raw.linkin_park_in_the_end
+        getString(R.string.music2) -> musicfile = R.raw.linkin_park_numb
+        getString(R.string.music3) -> musicfile = R.raw.linkin_park_what_ive_done
+        getString(R.string.nomusic) -> musicfile = -1
+        else -> {
+          musicfile = -1
+        }
+      }
+
+      if (musicfile != -1){
+        mediaPlayer = MediaPlayer.create(this, musicfile)
+        mediaPlayer?.setOnPreparedListener{
+          mediaPlayer?.start()
+        }
+      }
 
     // init avgFilter and stdFilter
 
@@ -260,17 +285,20 @@ class PushupActivity :  AppCompatActivity()
   override fun onStart() {
     super.onStart()
     openCamera()
+    mediaPlayer?.start()
     posenet = Posenet(this@PushupActivity)
   }
 
   override fun onPause() {
     closeCamera()
+    mediaPlayer?.pause()
     stopBackgroundThread()
     super.onPause()
   }
 
   override fun onDestroy() {
     super.onDestroy()
+    mediaPlayer?.stop()
     posenet.close()
   }
 

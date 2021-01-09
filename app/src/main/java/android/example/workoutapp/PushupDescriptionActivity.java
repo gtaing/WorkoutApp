@@ -1,21 +1,21 @@
 package android.example.workoutapp;
 
-import androidx.appcompat.app.AppCompatActivity;
-
 import android.content.Intent;
 import android.os.Bundle;
 import android.widget.ImageButton;
 import android.widget.Toast;
 
-public class Exercise1Activity extends AppCompatActivity {
+import androidx.appcompat.app.AppCompatActivity;
+
+public class PushupDescriptionActivity extends AppCompatActivity {
     ImageButton startpushup;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_exercise1);
+        setContentView(R.layout.activity_pushupdescription);
 
-        startpushup = (ImageButton) findViewById(R.id.playButton);
+        startpushup = findViewById(R.id.playButton );
         startpushup.setOnClickListener(view -> openNewActivity());
 
 

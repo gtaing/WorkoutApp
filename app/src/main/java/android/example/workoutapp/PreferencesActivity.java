@@ -1,25 +1,25 @@
 package android.example.workoutapp;
 
-        import androidx.appcompat.app.AppCompatActivity;
-        import androidx.appcompat.widget.Toolbar;
+import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.widget.Toolbar;
 
-        import android.content.Intent;
-        import android.content.SharedPreferences;
-        import android.os.Bundle;
-        import android.view.MenuItem;
-        import android.view.View;
-        import android.widget.AdapterView;
-        import android.widget.ArrayAdapter;
-        import android.widget.Spinner;
+import android.content.Intent;
+import android.content.SharedPreferences;
+import android.os.Bundle;
+import android.view.MenuItem;
+import android.view.View;
+import android.widget.AdapterView;
+import android.widget.ArrayAdapter;
+import android.widget.Spinner;
 
-        import com.mikepenz.materialdrawer.AccountHeader;
-        import com.mikepenz.materialdrawer.AccountHeaderBuilder;
-        import com.mikepenz.materialdrawer.Drawer;
-        import com.mikepenz.materialdrawer.DrawerBuilder;
-        import com.mikepenz.materialdrawer.model.DividerDrawerItem;
-        import com.mikepenz.materialdrawer.model.PrimaryDrawerItem;
-        import com.mikepenz.materialdrawer.model.SecondaryDrawerItem;
-        import com.mikepenz.materialdrawer.model.interfaces.IDrawerItem;
+import com.mikepenz.materialdrawer.AccountHeader;
+import com.mikepenz.materialdrawer.AccountHeaderBuilder;
+import com.mikepenz.materialdrawer.Drawer;
+import com.mikepenz.materialdrawer.DrawerBuilder;
+import com.mikepenz.materialdrawer.model.DividerDrawerItem;
+import com.mikepenz.materialdrawer.model.PrimaryDrawerItem;
+import com.mikepenz.materialdrawer.model.SecondaryDrawerItem;
+import com.mikepenz.materialdrawer.model.interfaces.IDrawerItem;
 
 public class PreferencesActivity extends AppCompatActivity {
 

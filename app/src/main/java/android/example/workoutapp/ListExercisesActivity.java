@@ -25,8 +25,10 @@ import android.widget.Toast;
 public class ListExercisesActivity extends AppCompatActivity {
 
     ListView simpleList;
-    String[] exerciseList = new String[] {
-            "Exercise 1", "Exercise 2", "Exercise 3"};
+    String[] exerciseList = new String[] {};
+    String[] exerciseDescription = new String[] {};
+
+
 
     private Drawer result;
 
@@ -35,6 +37,10 @@ public class ListExercisesActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_list_exercises);
+        exerciseList = new String[] {"Push-ups", "Squats", "Jumping Jacks"};
+        exerciseDescription = new String[] {
+                getString(R.string.pushupdescription),getString(R.string.squatdescription),getString(R.string.jumpingjackdescription)};
+
 
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
@@ -76,11 +82,11 @@ public class ListExercisesActivity extends AppCompatActivity {
                     public boolean onItemClick(View view, int position, IDrawerItem drawerItem) {
                         Intent intent = null;
                         if (drawerItem.getIdentifier() == 1) {
-                            // intent = new Intent(ListExercisesActivity.this, ListExercisesActivity.class);
+                            intent = new Intent(ListExercisesActivity.this, PushupDescriptionActivity.class);
                         } else if (drawerItem.getIdentifier() == 2) {
-                            intent = new Intent(ListExercisesActivity.this, MainActivity.class);
+                            intent = new Intent(ListExercisesActivity.this, PushupDescriptionActivity.class);
                         } else if (drawerItem.getIdentifier() == 3) {
-                            intent = new Intent(ListExercisesActivity.this, Exercise1Activity.class);
+                            intent = new Intent(ListExercisesActivity.this, PushupDescriptionActivity.class);
                         }
                         else if (drawerItem.getIdentifier() == 4) {
                             intent = new Intent(ListExercisesActivity.this, PreferencesActivity.class);
@@ -107,7 +113,7 @@ public class ListExercisesActivity extends AppCompatActivity {
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
                 switch(position){
                     case 0:
-                        Intent intent = new Intent(getApplicationContext(), Exercise1Activity.class);
+                        Intent intent = new Intent(getApplicationContext(), PushupDescriptionActivity.class);
                         startActivity(intent);
                         break;
                     default:
@@ -143,7 +149,7 @@ public class ListExercisesActivity extends AppCompatActivity {
             // ImageView image = view1.findViewById(R.id.list_view_images);
 
             name.setText(exerciseList[i]);
-            // descp.setText(exerciseDescription[i]);
+            descp.setText(exerciseDescription[i]);
             // image.setImageResource(ListImage[i]);
             return view1;
         }

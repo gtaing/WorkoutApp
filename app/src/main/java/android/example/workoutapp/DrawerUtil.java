@@ -26,6 +26,7 @@ public class DrawerUtil {
         PrimaryDrawerItem item1 = new PrimaryDrawerItem().withIdentifier(1).withName("List exercises");
         PrimaryDrawerItem item2 = new PrimaryDrawerItem().withIdentifier(2).withName("Records");
         PrimaryDrawerItem item3 = new PrimaryDrawerItem().withIdentifier(3).withName("Programs");
+        PrimaryDrawerItem item4 = new PrimaryDrawerItem().withIdentifier(4).withName("Preferences");
 
         AccountHeader accountHeader = new AccountHeaderBuilder()
                 .withActivity(activity)
@@ -46,7 +47,9 @@ public class DrawerUtil {
                         new DividerDrawerItem(),
                         item2,
                         new DividerDrawerItem(),
-                        item3
+                        item3,
+                        new DividerDrawerItem(),
+                        item4
                 )
                 .withOnDrawerItemClickListener(new Drawer.OnDrawerItemClickListener() {
                     @Override
@@ -58,6 +61,9 @@ public class DrawerUtil {
                                 intent = new Intent(activity, MainActivity.class);
                         } else if ((drawerItem.getIdentifier() == 3) && !(activity instanceof Exercise1Activity)) {
                             intent = new Intent(activity, Exercise1Activity.class);
+                        }
+                        else if ((drawerItem.getIdentifier() == 4) && !(activity instanceof PreferencesActivity)) {
+                            intent = new Intent(activity, PreferencesActivity.class);
                         }
                         if (intent != null) {
                             view.getContext().startActivity(intent);
@@ -72,6 +78,9 @@ public class DrawerUtil {
             result.setSelection(2);
         } else if (activity instanceof Exercise1Activity) {
             result.setSelection(3);
+        }
+        else if (activity instanceof PreferencesActivity) {
+            result.setSelection(4);
         }
 
 

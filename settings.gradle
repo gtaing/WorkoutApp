@@ -1,2 +1,2 @@
-include ':app'
+include ':app', ':posenet'
 rootProject.name = "Workout App"

@@ -187,6 +187,7 @@ class PushupActivity :  AppCompatActivity()
 
     private var musicmediaPlayer: MediaPlayer? = null
     private var voicemediaPlayer: MediaPlayer? = null
+    private var countdown0: Boolean = false
 
     private var musicfile: Int = -1
 
@@ -216,6 +217,9 @@ class PushupActivity :  AppCompatActivity()
       if (musicfile != -1){
         musicmediaPlayer = MediaPlayer.create(this, musicfile)
         musicmediaPlayer?.setOnPreparedListener{
+          //val log1 = (Math.log(maxVolume - currVolume) / Math.log(maxVolume.toDouble())).toFloat()
+          //musicmediaPlayer.setVolume(log1, log1) //set volume takes two paramater
+
           musicmediaPlayer?.start()
         }
       }
@@ -234,9 +238,10 @@ class PushupActivity :  AppCompatActivity()
 
         override fun onFinish() {
           textView7.visibility=View.INVISIBLE;
-          voicemediaPlayer = MediaPlayer.create(this@PushupActivity, R.raw.go)
+          voicemediaPlayer = MediaPlayer.create(this@PushupActivity, R.raw.go2)
           voicemediaPlayer?.setOnPreparedListener{
             voicemediaPlayer?.start()
+            countdown0 = true
           }
         }
       }.start()
@@ -635,33 +640,39 @@ class PushupActivity :  AppCompatActivity()
     }
 
     //Count pushups
-    //get line between shoulders:
-    //var startChestLineX = person.keyPoints[bodyJoints[2].first.ordinal].position.x.toFloat()
-    var startChestLineY = person.keyPoints[bodyJoints[2].first.ordinal].position.y.toFloat()
-    //var stopChestLineX = person.keyPoints[bodyJoints[2].second.ordinal].position.x.toFloat()
-    var stopChestLineY = person.keyPoints[bodyJoints[2].second.ordinal].position.y.toFloat()
+    if (countdown0){
+      //get line between shoulders:
+      //var startChestLineX = person.keyPoints[bodyJoints[2].first.ordinal].position.x.toFloat()
+      var startChestLineY = person.keyPoints[bodyJoints[2].first.ordinal].position.y.toFloat()
+      //var stopChestLineX = person.keyPoints[bodyJoints[2].second.ordinal].position.x.toFloat()
+      var stopChestLineY = person.keyPoints[bodyJoints[2].second.ordinal].position.y.toFloat()
 
-    var lineAverageY = (startChestLineY + stopChestLineY ).toDouble() / 2
+      var lineAverageY = (startChestLineY + stopChestLineY ).toDouble() / 2
 
-    smoothed_yLineValues.add(smoothedZScore(lineAverageY))
+      smoothed_yLineValues.add(smoothedZScore(lineAverageY))
 
-    while (smoothed_yLineValues.size > 4){
-      smoothed_yLineValues.removeAt(0)
-    }
-
-    if (smoothed_yLineValues.size == 4){
-      if (smoothed_yLineValues == listOf(-1, -1, 1, 1)){
-        pushups += 1
+      while (smoothed_yLineValues.size > 4){
+        smoothed_yLineValues.removeAt(0)
       }
+
+      if (smoothed_yLineValues.size == 4){
+        if (smoothed_yLineValues == listOf(-1, -1, 1, 1)){
+          pushups += 1
+        }
+      }
+
+      textView8.setText("Pushups: " + pushups.toString())
     }
 
-    canvas.drawText(
+
+
+    /*
+      canvas.drawText(
       "Pushups: %s".format(pushups),
-      (15.0f * widthRatio),
+      (20.0f * widthRatio),
       (50.0f * heightRatio + bottom),
       paint
     )
-    /*
     canvas.drawText(
       "Score: %.2f".format(person.score),
       (15.0f * widthRatio),

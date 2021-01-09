@@ -15,7 +15,7 @@ public class Exercise1Activity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_exercise1);
 
-        startpushup = (ImageButton) findViewById(R.id.playButton );
+        startpushup = (ImageButton) findViewById(R.id.playButton);
         startpushup.setOnClickListener(view -> openNewActivity());
 
 

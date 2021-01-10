@@ -18,14 +18,14 @@ public class Exercise4ActivityDone extends AppCompatActivity {
         int number = Integer.parseInt(extras.getString("number"));
         int kcal = (int)(number * 0.5);
 
-        ((TextView)findViewById(R.id.textView5)).setText("JUMPING JACKS DONE");
+        ((TextView)findViewById(R.id.textView5)).setText("PLANK DONE");
 
         if (duration > 59){
-            ((TextView)findViewById(R.id.textView9)).setText("You just did " + number + " jumping jacks in " +
-                    (int)(duration/60) +" Minutes and " + duration%60 +" seconds.");
+            ((TextView)findViewById(R.id.textView9)).setText("You just did " +
+                    (int)(duration/60) +" Minutes and " + duration%60 +" seconds"+ " of plank. ");
         }
         else{
-            ((TextView)findViewById(R.id.textView9)).setText("You just did " + number + " jumping jacks in " + duration +" seconds.");
+            ((TextView)findViewById(R.id.textView9)).setText("You just did " +  duration +" seconds"+ "of plank.");
         }
         int average  = 0;
         if (duration==0){
@@ -33,7 +33,7 @@ public class Exercise4ActivityDone extends AppCompatActivity {
         }else{
             average = (60*number)/duration;
         }
-        ((TextView)findViewById(R.id.textView14)).setText("That's "+ average +" jumping jacks per minute on average.");
+        //((TextView)findViewById(R.id.textView14)).setText("That's "+ average +" jumping jacks per minute on average.");
         ((TextView)findViewById(R.id.textView11)).setText("You burned " +kcal+" kcal.\n");
 
 

@@ -14,7 +14,6 @@ public class PushupDescriptionActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_pushupdescription);
-
         startpushup = findViewById(R.id.playButton );
         startpushup.setOnClickListener(view -> openNewActivity());
 
@@ -24,6 +23,7 @@ public class PushupDescriptionActivity extends AppCompatActivity {
     public void openNewActivity(){
         //Intent intent = new Intent(this, CameraActivity.class);
         Intent intent = new Intent(this, PushupActivity.class);
+        intent.putExtra("partOfProgram", "no");
         startActivity(intent);
     }
 /*

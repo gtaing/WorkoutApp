@@ -58,6 +58,11 @@
         <activity android:name=".Exercise_squat"></activity>
         <activity android:name=".Exercise_pushups"></activity>
 
+        <activity android:name=".ProgramCardio"></activity>
+        <activity android:name=".ProgramAbs"></activity>
+
+
+
 
 
 

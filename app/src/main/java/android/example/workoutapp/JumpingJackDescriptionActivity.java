@@ -23,17 +23,9 @@ public class JumpingJackDescriptionActivity extends AppCompatActivity {
     public void openNewActivity() {
         //Intent intent = new Intent(this, CameraActivity.class);
         Intent intent = new Intent(this, Exercise_jumpingjack.class);
-        startActivityForResult(intent, 1);
+        intent.putExtra("partOfProgram", "no");
+        startActivity(intent);
     }
 
-    public void onActivityResult(int requestCode, int resultCode, Intent data) {
-        super.onActivityResult(requestCode, resultCode, data);
-        if (requestCode == 1) {
-            if (resultCode == RESULT_OK) {
-                String incMessage = data.getStringExtra("message");
-                Toast.makeText(getApplicationContext(), incMessage, Toast.LENGTH_LONG).show();
 
-            }
-        }
-    }
 }

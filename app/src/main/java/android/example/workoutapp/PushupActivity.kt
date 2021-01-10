@@ -22,6 +22,7 @@ import android.app.Dialog
 import android.content.Context
 import android.content.Intent
 import android.content.pm.PackageManager
+import android.example.workoutapp.databinding.ActivityExercise1DoneBinding
 import android.graphics.*
 import android.hardware.camera2.*
 import android.media.Image
@@ -189,6 +190,7 @@ class PushupActivity :  AppCompatActivity()
     private var starttime:Long = 0L
     private var pausestarttime:Long = 0L
     private var pauseduration:Long = 0L
+    private var nextActivity = "Exercise1ActivityDone"
 
     private var musicfile: Int = -1
 
@@ -282,7 +284,6 @@ class PushupActivity :  AppCompatActivity()
         intent.putExtra("number", pushups.toString())
         intent.putExtra("duration", duration.toString())
         startActivity(intent)
-        //this@PushupActivity.setResult(RESULT_OK, intent);
         this@PushupActivity.finish()
       }
     }
@@ -340,6 +341,7 @@ class PushupActivity :  AppCompatActivity()
   }
 
   override fun onPause() {
+    (countdowntimer as CountDownTimer).cancel()
     pausestarttime = (System.currentTimeMillis() / 1000).toInt().toLong()
     closeCamera()
     musicmediaPlayer?.pause()
@@ -348,6 +350,7 @@ class PushupActivity :  AppCompatActivity()
   }
 
   override fun onDestroy() {
+    (countdowntimer as CountDownTimer).cancel()
     super.onDestroy()
     musicmediaPlayer?.stop()
     posenet.close()

@@ -23,7 +23,8 @@ public class SquatDescriptionActivity extends AppCompatActivity {
     public void openNewActivity() {
         //Intent intent = new Intent(this, CameraActivity.class);
         Intent intent = new Intent(this, Exercise_squat.class);
-        startActivityForResult(intent, 1);
+        intent.putExtra("partOfProgram", "no");
+        startActivity(intent);
     }
 
 }

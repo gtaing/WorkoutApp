@@ -261,7 +261,7 @@ class PushupActivity :  AppCompatActivity()
         val intent = Intent()
         intent.putExtra("message", "You did " + pushups.toString() + " Pushups!")
         this@PushupActivity.setResult(RESULT_OK, intent);
-
+        
         this@PushupActivity.finish()
       }
     }

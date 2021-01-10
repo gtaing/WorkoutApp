@@ -77,47 +77,6 @@
 
     </TableLayout>
 
-<!--    <TextView
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="History"/>
-
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:orientation="vertical">
-
-        <TextView
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="Weight"/>
-
-        <TextView
-            android:id="@+id/userWeightTextViewID"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="User Weight"/>
-
-        <Button
-            android:id="@+id/addWeightBtnID"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Add Weight"/>
-
-        <com.jjoe64.graphview.GraphView
-            android:layout_width="match_parent"
-            android:layout_height="200dip"
-            android:id="@+id/graph" />
-
-
-    </LinearLayout>
-
-
-
-    <TextView
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="Height"/>-->
 
 
     <TextView
@@ -126,7 +85,7 @@
         android:layout_height="wrap_content"
         android:layout_gravity="center_horizontal"
         android:gravity="center_horizontal"
-        android:layout_marginTop="50dp"
+        android:layout_marginTop="15dp"
         android:textSize="20sp"/>
 
     <EditText
@@ -140,13 +99,13 @@
         android:textSize="20sp"/>
 
     <TextView
-        android:text="@string/height"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_gravity="center_horizontal"
+        android:layout_marginTop="25dp"
         android:gravity="center_horizontal"
-        android:layout_marginTop="50dp"
-        android:textSize="20sp"/>
+        android:text="@string/height"
+        android:textSize="20sp" />
 
     <EditText
         android:id="@+id/height"
@@ -176,5 +135,44 @@
         android:gravity="center_horizontal"
         android:layout_marginTop="25dp"
         android:textSize="20sp"/>
+
+    <LinearLayout
+        android:layout_marginTop="20dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center_horizontal"
+        android:orientation="horizontal">
+
+        <Button
+            android:id="@+id/save"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_horizontal"
+            android:layout_marginTop="25dp"
+            android:onClick="saveData"
+            android:text="@string/save"
+            />
+
+        <Button
+            android:id="@+id/get"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_horizontal"
+            android:layout_marginTop="25dp"
+            android:onClick="getData"
+            android:text="@string/get"
+            />
+
+        <Button
+            android:id="@+id/clear"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_horizontal"
+            android:layout_marginTop="25dp"
+            android:onClick="clear"
+            android:text="@string/clear"
+            />
+
+    </LinearLayout>
 
 </LinearLayout>

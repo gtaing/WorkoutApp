@@ -21,6 +21,7 @@ public class Exercise_pushups extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_pushup_video);
         this.videoView = (VideoView) findViewById(R.id.videoView);
+        buttonPlay = (Button) findViewById(R.id.buttonPlay);
         // Set the media controller buttons
         if (this.mediaController == null) {
             this.mediaController = new MediaController(Exercise_pushups.this);

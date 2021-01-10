@@ -62,7 +62,7 @@ public class ListWorkoutPrograms extends AppCompatActivity {
                 .withActionBarDrawerToggle(true)
                 .withActionBarDrawerToggleAnimated(true)
                 .withCloseOnClick(true)
-                .withSelectedItem(1)
+                .withSelectedItem(3)
                 .addDrawerItems(
                         item1,
                         new DividerDrawerItem(),
@@ -81,7 +81,7 @@ public class ListWorkoutPrograms extends AppCompatActivity {
                         } else if (drawerItem.getIdentifier() == 2) {
                             intent = new Intent(ListWorkoutPrograms.this, MainActivity.class);
                         } else if (drawerItem.getIdentifier() == 3) {
-                            //Toast.makeText(ListWorkoutPrograms.this, "Programs page on development", Toast.LENGTH_SHORT).show();
+
                         }
                         else if (drawerItem.getIdentifier() == 4) {
                             intent = new Intent(ListWorkoutPrograms.this, PreferencesActivity.class);

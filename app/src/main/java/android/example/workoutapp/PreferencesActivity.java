@@ -125,8 +125,7 @@ public class PreferencesActivity extends AppCompatActivity {
                         } else if (drawerItem.getIdentifier() == 2) {
                             intent = new Intent(PreferencesActivity.this, MainActivity.class);
                         } else if (drawerItem.getIdentifier() == 3) {
-                            // intent = new Intent(PreferencesActivity.this, Exercise1Activity.class);
-                            Toast.makeText(PreferencesActivity.this, "Programs page on development", Toast.LENGTH_SHORT).show();
+                            intent = new Intent(PreferencesActivity.this, ListWorkoutPrograms.class);
                         }
                         else if (drawerItem.getIdentifier() == 4) {
                             // intent = new Intent(PreferencesActivity.this, PreferencesActivity.class);

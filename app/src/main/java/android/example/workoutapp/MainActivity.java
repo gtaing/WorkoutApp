@@ -99,8 +99,7 @@ public class MainActivity extends AppCompatActivity {
                         } else if (drawerItem.getIdentifier() == 2) {
                             // intent = new Intent(MainActivity.this, MainActivity.class);
                         } else if (drawerItem.getIdentifier() == 3) {
-                            // intent = new Intent(MainActivity.this, Exercise1Activity.class);
-                            Toast.makeText(MainActivity.this, "Programs page on development", Toast.LENGTH_SHORT).show();
+                            intent = new Intent(MainActivity.this, ListWorkoutPrograms.class);
                         }
                         else if (drawerItem.getIdentifier() == 4) {
                             intent = new Intent(MainActivity.this, PreferencesActivity.class);

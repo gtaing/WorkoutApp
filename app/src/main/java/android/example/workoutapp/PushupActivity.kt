@@ -41,7 +41,7 @@ import android.view.View
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.content.ContextCompat
 import androidx.fragment.app.DialogFragment
-import kotlinx.android.synthetic.main.tfe_pn_activity_posenet.*
+import kotlinx.android.synthetic.main.activity_pushups.*
 import org.apache.commons.math3.stat.descriptive.SummaryStatistics
 import org.tensorflow.lite.examples.posenet.lib.BodyPart
 import org.tensorflow.lite.examples.posenet.lib.Person
@@ -188,6 +188,10 @@ class PushupActivity :  AppCompatActivity()
     private var musicmediaPlayer: MediaPlayer? = null
     private var voicemediaPlayer: MediaPlayer? = null
     private var countdown0: Boolean = false
+    private var countdowntimer:CountDownTimer? = null
+    private var starttime:Long = 0L
+    private var pausestarttime:Long = 0L
+    private var pauseduration:Long = 0L
 
     private var musicfile: Int = -1
 
@@ -196,7 +200,7 @@ class PushupActivity :  AppCompatActivity()
     super.onCreate(savedInstanceState)
 
     Log.d("PushupActivity Started","PushupActivity Started")
-    setContentView(R.layout.tfe_pn_activity_posenet)
+    setContentView(R.layout.activity_pushups)
 
 
     //start music
@@ -230,21 +234,25 @@ class PushupActivity :  AppCompatActivity()
     avgFilter[this.lag - 1] = stats.mean
     stdFilter[this.lag - 1] = Math.sqrt(stats.populationVariance) // getStandardDeviation() uses sample variance (not what we want)
     stats.clear()
+    countdowntimer = object: CountDownTimer(6000, 1000) {
+      override fun onTick(millisUntilFinished: Long) {
+        textView7.setText("Start in \n" + millisUntilFinished / 1000)
+      }
 
-      object : CountDownTimer(6000, 1000) {
-        override fun onTick(millisUntilFinished: Long) {
-          textView7.setText("Start in \n" + millisUntilFinished / 1000)
+      override fun onFinish() {
+        textView7.visibility=View.INVISIBLE;
+        voicemediaPlayer = MediaPlayer.create(this@PushupActivity, R.raw.go2)
+        voicemediaPlayer?.setOnPreparedListener{
+          voicemediaPlayer?.start()
+          countdown0 = true
+          starttime = (System.currentTimeMillis() / 1000).toInt().toLong()
         }
+      }
+    }
 
-        override fun onFinish() {
-          textView7.visibility=View.INVISIBLE;
-          voicemediaPlayer = MediaPlayer.create(this@PushupActivity, R.raw.go2)
-          voicemediaPlayer?.setOnPreparedListener{
-            voicemediaPlayer?.start()
-            countdown0 = true
-          }
-        }
-      }.start()
+
+
+      (countdowntimer as CountDownTimer).start()
   }
 
   /** [CameraDevice.StateCallback] is called when [CameraDevice] changes its state.   */
@@ -258,10 +266,24 @@ class PushupActivity :  AppCompatActivity()
       createCameraPreviewSession()
 
       backbutton.setOnClickListener {
-        val intent = Intent()
-        intent.putExtra("message", "You did " + pushups.toString() + " Pushups!")
-        this@PushupActivity.setResult(RESULT_OK, intent);
 
+        (countdowntimer as CountDownTimer).cancel()
+
+
+        var endtime:Long = (System.currentTimeMillis() / 1000).toInt().toLong()
+        var duration = endtime - starttime - pauseduration
+
+        if (!countdown0){
+          duration = 0
+          pushups = 0
+        }
+
+        // connecting this main activity with the second activity and passing a string
+        var intent = Intent(this@PushupActivity, Exercise1ActivityDone::class.java)
+        intent.putExtra("number", pushups.toString())
+        intent.putExtra("duration", duration.toString())
+        startActivity(intent)
+        //this@PushupActivity.setResult(RESULT_OK, intent);
         this@PushupActivity.finish()
       }
     }
@@ -303,6 +325,11 @@ class PushupActivity :  AppCompatActivity()
   override fun onResume() {
     super.onResume()
     startBackgroundThread()
+    var resumetime = (System.currentTimeMillis() / 1000).toInt().toLong()
+    // only add the pauseduration if pause was made
+    if (pausestarttime!=0L){
+      pauseduration += resumetime - pausestarttime
+    }
   }
 
   override fun onStart() {
@@ -313,6 +340,7 @@ class PushupActivity :  AppCompatActivity()
   }
 
   override fun onPause() {
+    pausestarttime = (System.currentTimeMillis() / 1000).toInt().toLong()
     closeCamera()
     musicmediaPlayer?.pause()
     stopBackgroundThread()
@@ -323,6 +351,8 @@ class PushupActivity :  AppCompatActivity()
     super.onDestroy()
     musicmediaPlayer?.stop()
     posenet.close()
+
+
   }
 
   private fun requestCameraPermission() {

@@ -24,9 +24,9 @@ public class PushupDescriptionActivity extends AppCompatActivity {
     public void openNewActivity(){
         //Intent intent = new Intent(this, CameraActivity.class);
         Intent intent = new Intent(this, PushupActivity.class);
-        startActivityForResult(intent, 1);
+        startActivity(intent);
     }
-
+/*
     public void onActivityResult(int requestCode, int resultCode, Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
         if (requestCode == 1) {
@@ -37,5 +37,5 @@ public class PushupDescriptionActivity extends AppCompatActivity {
             }
         }
     }
-
+*/
 }

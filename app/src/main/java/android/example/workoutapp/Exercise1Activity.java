@@ -33,6 +33,9 @@ public class Exercise1Activity extends AppCompatActivity {
             if(resultCode == RESULT_OK) {
                 String incMessage = data.getStringExtra("message");
                 Toast.makeText(getApplicationContext(), incMessage, Toast.LENGTH_LONG).show();
+                //start done activity
+
+
 
             }
         }

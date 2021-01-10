@@ -11,11 +11,10 @@
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
         android:label="@string/app_name"
-        android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
-        android:theme="@style/Theme.WorkoutApp"
-        >
-        <activity android:name=".ListView" />
+        android:roundIcon="@mipmap/ic_launcher2_round"
+        android:theme="@style/Theme.WorkoutApp">
+        <activity android:name=".ListView"></activity>
         <activity
             android:name=".ListExercisesActivity"
             android:label="@string/title_activity_list_exercises"
@@ -35,9 +34,9 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".PushupDescriptionActivity" />
-        <activity android:name=".Exercise1ActivityDone" />
-        <activity android:name=".PushupActivity" />
+        <activity android:name=".PushupDescriptionActivity"></activity>
+
+        <activity android:name=".PushupActivity"></activity>
         <activity android:name=".PreferencesActivity"
                 android:theme="@style/Theme.AppCompat.DayNight.NoActionBar"
                 android:label="@string/preferences_activity_title"></activity>

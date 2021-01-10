@@ -182,9 +182,6 @@ class PushupActivity :  AppCompatActivity()
 
 
 
-
-
-
     private var musicmediaPlayer: MediaPlayer? = null
     private var voicemediaPlayer: MediaPlayer? = null
     private var countdown0: Boolean = false
@@ -255,6 +252,7 @@ class PushupActivity :  AppCompatActivity()
       (countdowntimer as CountDownTimer).start()
   }
 
+
   /** [CameraDevice.StateCallback] is called when [CameraDevice] changes its state.   */
   private val stateCallback = object : CameraDevice.StateCallback() {
 
@@ -266,6 +264,7 @@ class PushupActivity :  AppCompatActivity()
       createCameraPreviewSession()
 
       backbutton.setOnClickListener {
+<<<<<<< HEAD
 
         (countdowntimer as CountDownTimer).cancel()
 
@@ -284,9 +283,20 @@ class PushupActivity :  AppCompatActivity()
         intent.putExtra("duration", duration.toString())
         startActivity(intent)
         //this@PushupActivity.setResult(RESULT_OK, intent);
+||||||| ae0d824
+        val intent = Intent()
+        intent.putExtra("message", "You did " + pushups.toString() + " Pushups!")
+        this@PushupActivity.setResult(RESULT_OK, intent);
+
+=======
+        val intent = Intent()
+        intent.putExtra("message", "You did " + pushups.toString() + " Pushups!")
+        this@PushupActivity.setResult(RESULT_OK, intent);
+>>>>>>> a241b402c019d7a2eb8d0f0c60e923a7653326a0
         this@PushupActivity.finish()
       }
     }
+
 
 
     override fun onDisconnected(cameraDevice: CameraDevice) {

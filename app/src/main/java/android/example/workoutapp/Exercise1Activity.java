@@ -1,3 +1,4 @@
+/*
 package android.example.workoutapp;
 
 import androidx.appcompat.app.AppCompatActivity;
@@ -13,7 +14,7 @@ public class Exercise1Activity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_exercise1);
+        setContentView(R.layout.activity_pushups_description);
 
         startpushup = (ImageButton) findViewById(R.id.playButton);
         startpushup.setOnClickListener(view -> openNewActivity());
@@ -41,4 +42,4 @@ public class Exercise1Activity extends AppCompatActivity {
         }
     }
 
-}
+}*/

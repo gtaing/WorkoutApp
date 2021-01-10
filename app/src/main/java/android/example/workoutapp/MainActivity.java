@@ -4,6 +4,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
 
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.view.MenuItem;
 import android.view.View;
@@ -34,11 +35,12 @@ public class MainActivity extends AppCompatActivity {
 
     private Drawer resultDrawer;
     private TextView userWeight;
-    // private Button buttonAddWeight;
-
     private EditText height;
     private EditText weight;
     private TextView result;
+
+    SharedPreferences sharedPreferences;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -109,60 +111,18 @@ public class MainActivity extends AppCompatActivity {
                 })
                 .build();
 
-/*        userWeight = (TextView) findViewById(R.id.userWeightTextViewID);
-        buttonAddWeight = (Button) findViewById(R.id.addWeightBtnID);
+        // Creation of the SharedPreferences
+        sharedPreferences = getSharedPreferences("userData", MODE_PRIVATE);
+        if (sharedPreferences.contains("heightUser")) {
+            height.setText(sharedPreferences.getString("heightUser", ""));
+        }
+        if (sharedPreferences.contains("weightUser")) {
+            weight.setText(sharedPreferences.getString("weightUser", ""));
+        }
+        if (sharedPreferences.contains("BMI")) {
+            result.setText(sharedPreferences.getString("BMI", ""));
+        }
 
-        buttonAddWeight.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                openDialog();
-            }
-        });
-
-// generate Dates
-        Calendar calendar = Calendar.getInstance();
-        Date d1 = calendar.getTime();
-        calendar.add(Calendar.DATE, 1);
-        Date d2 = calendar.getTime();
-        calendar.add(Calendar.DATE, 1);
-        Date d3 = calendar.getTime();
-        calendar.add(Calendar.DATE, 1);
-        Date d4 = calendar.getTime();
-        calendar.add(Calendar.DATE, 1);
-        Date d5 = calendar.getTime();
-        calendar.add(Calendar.DATE, 1);
-        Date d6 = calendar.getTime();
-
-        GraphView graph = (GraphView) findViewById(R.id.graph);
-
-// you can directly pass Date objects to DataPoint-Constructor
-// this will convert the Date to double via Date#getTime()
-        LineGraphSeries<DataPoint> series = new LineGraphSeries<>(new DataPoint[] {
-                new DataPoint(d1, 0),
-                new DataPoint(d2, 0),
-                new DataPoint(d3, 0),
-                new DataPoint(d4, 57),
-                new DataPoint(d5, 0),
-                new DataPoint(d6, 0)
-
-
-        });
-        graph.addSeries(series);
-
-// set date label formatter
-        graph.getGridLabelRenderer().setLabelFormatter(new DateAsXAxisLabelFormatter(MainActivity.this));
-        graph.getGridLabelRenderer().setNumHorizontalLabels(3); // only 4 because of the space
-
-// set manual x bounds to have nice steps
-        graph.getViewport().setMinX(d1.getTime());
-        graph.getViewport().setMaxX(d6.getTime());
-        graph.getViewport().setXAxisBoundsManual(true);
-
-// as we use dates as labels, the human rounding to nice readable numbers
-// is not necessary
-        graph.getGridLabelRenderer().setHumanRounding(false);
-        graph.getViewport().setScrollable(true);
-*/
     }
 
 /*    public void openDialog(){
@@ -210,6 +170,55 @@ public class MainActivity extends AppCompatActivity {
         result.setText(bmiLabel);
     }
 
+    public void saveData(View view){
+        String heightStr = height.getText().toString();
+        String weightStr = weight.getText().toString();
+
+        if (heightStr != null && !"".equals(heightStr)
+                && weightStr != null  &&  !"".equals(weightStr)) {
+            float heightValue = Float.parseFloat(heightStr) / 100;
+            float weightValue = Float.parseFloat(weightStr);
+
+            float bmi = weightValue / (heightValue * heightValue);
+
+            SharedPreferences.Editor editor = sharedPreferences.edit();
+            editor.putString("heightUser", heightStr);
+            editor.putString("weightUser", weightStr);
+            editor.putString("BMI", String.valueOf(bmi));
+            editor.commit();
+
+        }
+
+    }
+
+    public void clear(View view) {
+        height = (EditText) findViewById(R.id.height);
+        weight = (EditText) findViewById(R.id.weight);
+        result = (TextView) findViewById(R.id.result);
+
+        height.setText("");
+        weight.setText("");
+        result.setText("");
+    }
+
+    public void getData(View view) {
+        float defValue = 0;
+        height = (EditText) findViewById(R.id.height);
+        weight = (EditText) findViewById(R.id.weight);
+        result = (TextView) findViewById(R.id.result);
+        sharedPreferences = getSharedPreferences("userData", MODE_PRIVATE);
+
+        if (sharedPreferences.contains("heightUser")) {
+            height.setText(sharedPreferences.getString("heightUser", ""));
+        }
+        if (sharedPreferences.contains("weightUser")) {
+            weight.setText(sharedPreferences.getString("weightUser", ""));
+        }
+        if (sharedPreferences.contains("BMI")) {
+            result.setText(sharedPreferences.getString("BMI", ""));
+        }
+    }
+
     @Override
     public void onBackPressed(){
         if (resultDrawer != null && resultDrawer.isDrawerOpen()){
@@ -220,9 +229,4 @@ public class MainActivity extends AppCompatActivity {
         }
     }
 
-
-/*    @Override
-    public void applyTexts(String weight) {
-        userWeight.setText(weight);
-    }*/
 }

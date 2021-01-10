@@ -3,13 +3,11 @@ package android.example.workoutapp;
 import android.content.Intent;
 import android.os.Bundle;
 import android.widget.Button;
-import android.widget.ImageButton;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
 
-public class Exercise1ActivityDone extends AppCompatActivity {
+public class Exercise4ActivityDone extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -20,12 +18,14 @@ public class Exercise1ActivityDone extends AppCompatActivity {
         int number = Integer.parseInt(extras.getString("number"));
         int kcal = (int)(number * 0.5);
 
+        ((TextView)findViewById(R.id.textView5)).setText("JUMPING JACKS DONE");
+
         if (duration > 59){
-            ((TextView)findViewById(R.id.textView9)).setText("You just did " + number + " push-ups in " +
+            ((TextView)findViewById(R.id.textView9)).setText("You just did " + number + " jumping jacks in " +
                     (int)(duration/60) +" Minutes and " + duration%60 +" seconds.");
         }
         else{
-            ((TextView)findViewById(R.id.textView9)).setText("You just did " + number + " push-ups in " + duration +" seconds.");
+            ((TextView)findViewById(R.id.textView9)).setText("You just did " + number + " jumping jacks in " + duration +" seconds.");
         }
         int average  = 0;
         if (duration==0){
@@ -33,7 +33,7 @@ public class Exercise1ActivityDone extends AppCompatActivity {
         }else{
             average = (60*number)/duration;
         }
-        ((TextView)findViewById(R.id.textView14)).setText("That's "+ average +" pushups per minute on average.");
+        ((TextView)findViewById(R.id.textView14)).setText("That's "+ average +" jumping jacks per minute on average.");
         ((TextView)findViewById(R.id.textView11)).setText("You burned " +kcal+" kcal.\n");
 
 

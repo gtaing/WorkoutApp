@@ -9,6 +9,7 @@ import androidx.appcompat.app.AppCompatActivity;
 public class ProgramCardio extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.a);
+        setContentView(R.layout.activity_pushupdescription);
 
     }
+}

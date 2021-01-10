@@ -12,6 +12,9 @@
     <string name="squatdescription">A squat is a strength exercise in which the trainee lowers their hips from a standing position and then stands back up. During the descent of a squat, the hip and knee joints flex while the ankle joint dorsiflexes; conversely the hip and knee joints extend and the ankle joint plantarflexes when standing up.</string>
     <string name="jumpingjackdescription">A jumping jack, also known as a star jump and called a side-straddle hop in the US military, is a physical jumping exercise performed by jumping to a position with the legs spread wide and the hands going overhead, sometimes in a clap, and then returning to a position with the feet together and the arms at the sides.</string>
 
+    <string name="cardio_program_description">Cardio program description coming soon</string>
+    <string name="abdomen_torso_program_description">Abs program description coming soon</string>
+
     <string name="next">Next</string>
     <string name="previous">Previous</string>
     <string name="tfe_pn_request_permission" translation_description="Request camera permission [CHAR_LIMIT=40]">This app needs camera permission.</string>

@@ -33,7 +33,7 @@ public class Exercise3ActivityDone extends AppCompatActivity {
         }else{
             average = (60*number)/duration;
         }
-        ((TextView)findViewById(R.id.textView14)).setText("Thats "+ average +" jumping jacks per minute on average.");
+        ((TextView)findViewById(R.id.textView14)).setText("That's "+ average +" jumping jacks per minute on average.");
         ((TextView)findViewById(R.id.textView11)).setText("You burned " +kcal+" kcal.\n");
 
 

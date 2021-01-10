@@ -108,11 +108,11 @@ public class ListWorkoutPrograms extends AppCompatActivity {
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
                 switch(position){
                     case 0:
-                        Intent intent = new Intent(getApplicationContext(), programB.class);
+                        Intent intent = new Intent(getApplicationContext(), ProgramCardio.class);
                         startActivity(intent);
                         break;
                     case 1:
-                        intent = new Intent(getApplicationContext(), programB.class);
+                        intent = new Intent(getApplicationContext(), ProgramAbs.class);
                         startActivity(intent);
                         break;
                 }
@@ -125,7 +125,7 @@ public class ListWorkoutPrograms extends AppCompatActivity {
         @Override
         public int getCount() {
             // return ListViewImages.length();
-            return 3;
+            return 2;
         }
 
         @Override

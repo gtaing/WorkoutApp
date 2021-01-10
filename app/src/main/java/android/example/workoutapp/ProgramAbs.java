@@ -9,7 +9,7 @@ import androidx.appcompat.app.AppCompatActivity;
 
 public class ProgramAbs extends AppCompatActivity {
     String nextActivity;
-}
+
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_jumping_jack_description);
@@ -22,3 +22,4 @@ public class ProgramAbs extends AppCompatActivity {
         Intent intent = new Intent(this, Exercise_jumpingjack.class);
         startActivityForResult(intent, 1);
     }
+}

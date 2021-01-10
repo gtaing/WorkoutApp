@@ -86,8 +86,7 @@ public class ListExercisesActivity extends AppCompatActivity {
                         } else if (drawerItem.getIdentifier() == 2) {
                             intent = new Intent(ListExercisesActivity.this, MainActivity.class);
                         } else if (drawerItem.getIdentifier() == 3) {
-                            //intent = new Intent(ListExercisesActivity.this, Programs.class);
-                            Toast.makeText(ListExercisesActivity.this, "Programs page on development", Toast.LENGTH_SHORT).show();
+                            intent = new Intent(ListExercisesActivity.this, ListWorkoutPrograms.class);
                         }
                         else if (drawerItem.getIdentifier() == 4) {
                             intent = new Intent(ListExercisesActivity.this, PreferencesActivity.class);
@@ -117,8 +116,18 @@ public class ListExercisesActivity extends AppCompatActivity {
                         Intent intent = new Intent(getApplicationContext(), PushupDescriptionActivity.class);
                         startActivity(intent);
                         break;
-                    default:
-                        Toast.makeText(ListExercisesActivity.this, "I am the case n° " + customAdapter.getItem(position), Toast.LENGTH_SHORT).show();
+                    case 1:
+                        intent = new Intent(getApplicationContext(), SquatDescriptionActivity.class);
+                        startActivity(intent);
+                        break;
+                    case 2:
+                        intent = new Intent(getApplicationContext(), JumpingJackDescriptionActivity.class);
+                        startActivity(intent);
+                        break;
+                    case 3:
+                        intent = new Intent(getApplicationContext(), PlankDescriptionActivity.class);
+                        startActivity(intent);
+                        break;
                 }
 
             }

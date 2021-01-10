@@ -20,6 +20,10 @@
             android:label="@string/title_activity_list_exercises"
             android:theme="@style/Theme.WorkoutApp.NoActionBar" />
         <activity
+            android:name=".ListWorkoutPrograms"
+            android:label="@string/title_activity_list_exercises"
+            android:theme="@style/Theme.WorkoutApp.NoActionBar" />
+        <activity
             android:name=".MainActivity"
             android:theme="@style/Theme.AppCompat.DayNight.NoActionBar"
             android:label="@string/main_activity_title"
@@ -34,12 +38,31 @@
             </intent-filter>
         </activity>
         <activity android:name=".PushupDescriptionActivity"></activity>
+        <activity android:name=".SquatDescriptionActivity"></activity>
+        <activity android:name=".JumpingJackDescriptionActivity"></activity>
+        <activity android:name=".PlankDescriptionActivity"></activity>
+
+
         <activity android:name=".SquatsActivity"></activity>
         <activity android:name=".JumpingJacksActivity"></activity>
+
+
         <activity android:name=".Exercise1ActivityDone"></activity>
         <activity android:name=".Exercise2ActivityDone"></activity>
         <activity android:name=".Exercise3ActivityDone"></activity>
+        <activity android:name=".Exercise4ActivityDone"></activity>
+
         <activity android:name=".PushupActivity"></activity>
+        <activity android:name=".Exercise_jumpingjack"></activity>
+        <activity android:name=".Exercise_plank"></activity>
+        <activity android:name=".Exercise_squat"></activity>
+        <activity android:name=".Exercise_pushups"></activity>
+
+
+
+
+
+
         <activity android:name=".PreferencesActivity"
                 android:theme="@style/Theme.AppCompat.DayNight.NoActionBar"
                 android:label="@string/preferences_activity_title"></activity>

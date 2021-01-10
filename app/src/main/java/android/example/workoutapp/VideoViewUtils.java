@@ -8,7 +8,9 @@ import android.widget.Toast;
 import android.widget.VideoView;
 
 public class VideoViewUtils {
-    public static final String RAW_VIDEO_SAMPLE = "pushup_video";
+    public static final String RAW_VIDEO_SAMPLE_PUSH_UP = "pushup_video";
+    public static final String RAW_VIDEO_SAMPLE_SQUAT = "squats";
+    public static final String RAW_VIDEO_SAMPLE_JUMPING_JACK = "jumping_jack";
     public static final String LOG_TAG= "AndroidVideoView";
     // Play a video in directory RAW.
     // Video name = "myvideo.mp4" ==> resName = "myvideo".

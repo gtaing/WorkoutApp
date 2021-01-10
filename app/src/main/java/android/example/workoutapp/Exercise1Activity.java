@@ -1,3 +1,4 @@
+/*
 package android.example.workoutapp;
 
 import androidx.appcompat.app.AppCompatActivity;
@@ -38,4 +39,4 @@ public class Exercise1Activity extends AppCompatActivity {
         }
     }
 
-}
+}*/

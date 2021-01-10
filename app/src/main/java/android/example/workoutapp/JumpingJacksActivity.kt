@@ -52,7 +52,7 @@ import kotlin.math.abs
 
 
 //class MainActivity : AppCompatActivity() {
-class PushupActivity :  AppCompatActivity()
+class JumpingJacksActivity :  AppCompatActivity()
   //Fragment(),
   //ActivityCompat.OnRequestPermissionsResultCallback {
   {
@@ -169,8 +169,8 @@ class PushupActivity :  AppCompatActivity()
   //the get return value of signal
   private var smoothed_yLineValues:MutableList<Int> = MutableList(0) {0}
 
-  //number of pushups
-  private var pushups = 0;
+  //number of jumpingJacks
+  private var jumpingJacks = 0;
 
 
   val REQUEST_CAMERA_PERMISSION = 1
@@ -238,7 +238,7 @@ class PushupActivity :  AppCompatActivity()
 
       override fun onFinish() {
         textView7.visibility=View.INVISIBLE;
-        voicemediaPlayer = MediaPlayer.create(this@PushupActivity, R.raw.go2)
+        voicemediaPlayer = MediaPlayer.create(this@JumpingJacksActivity, R.raw.go2)
         voicemediaPlayer?.setOnPreparedListener{
           voicemediaPlayer?.start()
           countdown0 = true
@@ -260,7 +260,7 @@ class PushupActivity :  AppCompatActivity()
       surfaceHolder = surfaceView.holder
 
       cameraOpenCloseLock.release()
-      this@PushupActivity.cameraDevice = cameraDevice
+      this@JumpingJacksActivity.cameraDevice = cameraDevice
       createCameraPreviewSession()
 
       backbutton.setOnClickListener {
@@ -274,16 +274,16 @@ class PushupActivity :  AppCompatActivity()
 
         if (!countdown0){
           duration = 0
-          pushups = 0
+          jumpingJacks = 0
         }
 
         // connecting this main activity with the second activity and passing a string
-        var intent = Intent(this@PushupActivity, Exercise1ActivityDone::class.java)
-        intent.putExtra("number", pushups.toString())
+        var intent = Intent(this@JumpingJacksActivity, Exercise1ActivityDone::class.java)
+        intent.putExtra("number", jumpingJacks.toString())
         intent.putExtra("duration", duration.toString())
         startActivity(intent)
         //this@PushupActivity.setResult(RESULT_OK, intent);
-        this@PushupActivity.finish()
+        this@JumpingJacksActivity.finish()
       }
     }
 
@@ -292,12 +292,12 @@ class PushupActivity :  AppCompatActivity()
     override fun onDisconnected(cameraDevice: CameraDevice) {
       cameraOpenCloseLock.release()
       cameraDevice.close()
-      this@PushupActivity.cameraDevice = null
+      this@JumpingJacksActivity.cameraDevice = null
     }
 
     override fun onError(cameraDevice: CameraDevice, error: Int) {
       onDisconnected(cameraDevice)
-      this@PushupActivity.finish()
+      this@JumpingJacksActivity.finish()
     }
   }
 
@@ -336,7 +336,7 @@ class PushupActivity :  AppCompatActivity()
     super.onStart()
     openCamera()
     musicmediaPlayer?.start()
-    posenet = Posenet(this@PushupActivity)
+    posenet = Posenet(this@JumpingJacksActivity)
   }
 
   override fun onPause() {
@@ -386,7 +386,7 @@ class PushupActivity :  AppCompatActivity()
    * Sets up member variables related to camera.
    */
   private fun setUpCameraOutputs() {
-    val activity = this@PushupActivity
+    val activity = this@JumpingJacksActivity
     val manager = activity.getSystemService(Context.CAMERA_SERVICE) as CameraManager
     try {
       for (cameraId in manager.cameraIdList) {
@@ -451,7 +451,7 @@ class PushupActivity :  AppCompatActivity()
   }
 
   /**
-   * Opens the camera specified by [PushupActivity.cameraId].
+   * Opens the camera specified by [JumpingJacksActivity.cameraId].
    */
   private fun openCamera() {
     val permissionCamera = ContextCompat.checkSelfPermission(this, Manifest.permission.CAMERA)
@@ -459,7 +459,7 @@ class PushupActivity :  AppCompatActivity()
       requestCameraPermission()
     }
     setUpCameraOutputs()
-    val manager = this@PushupActivity.getSystemService(Context.CAMERA_SERVICE) as CameraManager
+    val manager = this@JumpingJacksActivity.getSystemService(Context.CAMERA_SERVICE) as CameraManager
     try {
       // Wait for camera to open - 2.5 seconds is sufficient
       if (!cameraOpenCloseLock.tryAcquire(2500, TimeUnit.MILLISECONDS)) {
@@ -681,7 +681,7 @@ class PushupActivity :  AppCompatActivity()
       }
     }
 
-    //Count pushups
+    //Count jumpingJacks
     if (countdown0){
       //get line between shoulders:
       //var startChestLineX = person.keyPoints[bodyJoints[2].first.ordinal].position.x.toFloat()
@@ -699,22 +699,17 @@ class PushupActivity :  AppCompatActivity()
 
       if (smoothed_yLineValues.size == 4){
         if (smoothed_yLineValues == listOf(-1, -1, 1, 1)){
-          pushups += 1
+          jumpingJacks += 1
         }
       }
 
-      textView8.setText("Pushups: " + pushups.toString())
+      textView8.setText("jumping Jacks: " + jumpingJacks.toString())
     }
 
 
 
     /*
-      canvas.drawText(
-      "Pushups: %s".format(pushups),
-      (20.0f * widthRatio),
-      (50.0f * heightRatio + bottom),
-      paint
-    )
+
     canvas.drawText(
       "Score: %.2f".format(person.score),
       (15.0f * widthRatio),

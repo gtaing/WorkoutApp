@@ -19,7 +19,6 @@
             android:name=".ListExercisesActivity"
             android:label="@string/title_activity_list_exercises"
             android:theme="@style/Theme.WorkoutApp.NoActionBar" />
-        <activity android:name=".Exercise1Activity" />
         <activity
             android:name=".MainActivity"
             android:theme="@style/Theme.AppCompat.DayNight.NoActionBar"
@@ -35,7 +34,11 @@
             </intent-filter>
         </activity>
         <activity android:name=".PushupDescriptionActivity"></activity>
+        <activity android:name=".SquatsActivity"></activity>
+        <activity android:name=".JumpingJacksActivity"></activity>
         <activity android:name=".Exercise1ActivityDone"></activity>
+        <activity android:name=".Exercise2ActivityDone"></activity>
+        <activity android:name=".Exercise3ActivityDone"></activity>
         <activity android:name=".PushupActivity"></activity>
         <activity android:name=".PreferencesActivity"
                 android:theme="@style/Theme.AppCompat.DayNight.NoActionBar"

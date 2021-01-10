@@ -50,6 +50,9 @@ public class MainActivity extends AppCompatActivity {
         height = (EditText) findViewById(R.id.height);
         weight = (EditText) findViewById(R.id.weight);
         result = (TextView) findViewById(R.id.result);
+        TextView workout = (TextView) findViewById(R.id.workoutID);
+        TextView kcal = (TextView) findViewById(R.id.kcalID);
+        TextView minute = (TextView) findViewById(R.id.minuteID);
 
         Toolbar toolbar = findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
@@ -121,6 +124,27 @@ public class MainActivity extends AppCompatActivity {
         }
         if (sharedPreferences.contains("BMI")) {
             result.setText(sharedPreferences.getString("BMI", ""));
+        }
+        if (sharedPreferences.contains("numberWorkout")) {
+            workout.setText(sharedPreferences.getString("numberWorkout", ""));
+        }
+        if (sharedPreferences.contains("kcal")) {
+            kcal.setText(sharedPreferences.getString("kcal", ""));
+        }
+        if (sharedPreferences.contains("duration")) {
+            int nbMinutes = (int) Integer.parseInt(sharedPreferences.getString("duration", ""))/ 60;
+            int nbSeconds = Integer.parseInt(sharedPreferences.getString("duration", "")) % 60;
+
+            String nbminutesStr = String.valueOf(nbMinutes), nbSecondsStr = String.valueOf(nbSeconds);
+
+            if (String.valueOf(nbMinutes).length() == 1) {
+                nbminutesStr = "0" + nbminutesStr;
+            }
+            if (String.valueOf(nbSeconds).length() == 1) {
+                nbSecondsStr = "0" + nbSecondsStr;
+            }
+
+            minute.setText(nbminutesStr + ":" + nbSecondsStr);
         }
 
     }

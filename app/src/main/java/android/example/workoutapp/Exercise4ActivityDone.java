@@ -1,6 +1,7 @@
 package android.example.workoutapp;
 
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.widget.Button;
 import android.widget.TextView;
@@ -8,6 +9,8 @@ import android.widget.TextView;
 import androidx.appcompat.app.AppCompatActivity;
 
 public class Exercise4ActivityDone extends AppCompatActivity {
+
+    SharedPreferences sharedPreferences;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -36,10 +39,15 @@ public class Exercise4ActivityDone extends AppCompatActivity {
         ((TextView)findViewById(R.id.textView14)).setText("That's "+ average +" jumping jacks per minute on average.");
         ((TextView)findViewById(R.id.textView11)).setText("You burned " +kcal+" kcal.\n");
 
+        // Creation of the SharedPreferences
+        sharedPreferences = getSharedPreferences("userData", MODE_PRIVATE);
 
         Button donebutton = (Button) findViewById(R.id.button);
-        donebutton.setOnClickListener(view -> openNewActivity());
-
+        donebutton.setOnClickListener(view -> {
+            SavingUserDataUtil obj = new SavingUserDataUtil();
+            obj.saveDataWorkout(view, duration, kcal, number, sharedPreferences);
+            openNewActivity();
+        });
 
     }
 

@@ -55,7 +55,7 @@ public class Exercise_plank extends AppCompatActivity{
             @Override
             public void onClick(View v) {
                 // "myvideo.mp4" in directory "raw".
-                String resName = VideoViewUtils.RAW_VIDEO_SAMPLE_JUMPING_JACK;
+                String resName = VideoViewUtils.RAW_VIDEO_SAMPLE_PLANK;
                 VideoViewUtils.playRawVideo(Exercise_plank.this, videoView, resName);
             }
         });

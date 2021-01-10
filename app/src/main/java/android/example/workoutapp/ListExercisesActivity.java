@@ -37,7 +37,7 @@ public class ListExercisesActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_list_exercises);
-        exerciseList = new String[] {"Push-ups", "Squats", "Jumping Jacks, Plank"};
+        exerciseList = new String[] {"Push-ups", "Squats", "Jumping Jacks", "Plank"};
         exerciseDescription = new String[] {
                 getString(R.string.pushupdescription),getString(R.string.squatdescription),getString(R.string.jumpingjackdescription),getString(R.string.plankdescription)};
 

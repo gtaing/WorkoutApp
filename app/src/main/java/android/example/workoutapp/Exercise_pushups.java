@@ -8,7 +8,6 @@ import android.media.MediaPlayer.OnPreparedListener;
 import android.view.View;
 import android.widget.Button;
 import android.widget.MediaController;
-import android.widget.VideoView;
 
 public class Exercise_pushups extends AppCompatActivity {
     private VideoView videoView;
@@ -19,7 +18,7 @@ public class Exercise_pushups extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_pushup_video);
+        setContentView(R.layout.activity_exercise_video);
         this.videoView = (VideoView) findViewById(R.id.videoView);
         buttonPlay = (Button) findViewById(R.id.buttonPlay);
         // Set the media controller buttons
@@ -57,7 +56,7 @@ public class Exercise_pushups extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 // "myvideo.mp4" in directory "raw".
-                String resName = VideoViewUtils.RAW_VIDEO_SAMPLE;
+                String resName = VideoViewUtils.RAW_VIDEO_SAMPLE_PUSH_UP;
                 VideoViewUtils.playRawVideo(Exercise_pushups.this, videoView, resName);
             }
         });

@@ -37,9 +37,9 @@ public class ListExercisesActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_list_exercises);
-        exerciseList = new String[] {"Push-ups", "Squats", "Jumping Jacks"};
+        exerciseList = new String[] {"Push-ups", "Squats", "Jumping Jacks, Plank"};
         exerciseDescription = new String[] {
-                getString(R.string.pushupdescription),getString(R.string.squatdescription),getString(R.string.jumpingjackdescription)};
+                getString(R.string.pushupdescription),getString(R.string.squatdescription),getString(R.string.jumpingjackdescription),getString(R.string.plankdescription)};
 
 
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
@@ -49,7 +49,7 @@ public class ListExercisesActivity extends AppCompatActivity {
         // DrawerUtil.getDrawer(this, toolbar);
 
         //if you want to update the items at a later time it is recommended to keep it in a variable
-        PrimaryDrawerItem item1 = new PrimaryDrawerItem().withIdentifier(1).withName("List exercises");
+        PrimaryDrawerItem item1 = new PrimaryDrawerItem().withIdentifier(1).withName("List of exercises");
         PrimaryDrawerItem item2 = new PrimaryDrawerItem().withIdentifier(2).withName("Records");
         PrimaryDrawerItem item3 = new PrimaryDrawerItem().withIdentifier(3).withName("Programs");
         PrimaryDrawerItem item4 = new PrimaryDrawerItem().withIdentifier(4).withName("Preferences");
@@ -138,7 +138,7 @@ public class ListExercisesActivity extends AppCompatActivity {
         @Override
         public int getCount() {
             // return ListViewImages.length();
-            return 3;
+            return 4;
         }
 
         @Override

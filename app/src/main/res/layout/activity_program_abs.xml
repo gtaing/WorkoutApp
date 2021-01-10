@@ -13,7 +13,7 @@
         android:id="@+id/textView16"
         android:layout_width="149dp"
         android:layout_height="49dp"
-        android:text="Number of jumping jacks:"
+        android:text="Time (minutes) doing plank"
         android:textAlignment="center"
         android:textSize="18sp"
         app:layout_constraintBottom_toBottomOf="parent"
@@ -41,15 +41,15 @@
 
     <ImageView
         android:id="@+id/imageView7"
-        android:layout_width="150dp"
-        android:layout_height="150dp"
+        android:layout_width="183dp"
+        android:layout_height="198dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.85"
+        app:layout_constraintHorizontal_bias="0.894"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.321"
-        app:srcCompat="@drawable/jumping_jack" />
+        app:layout_constraintVertical_bias="0.311"
+        app:srcCompat="@drawable/plank" />
 
     <ImageView
         android:id="@+id/imageView6"
@@ -61,7 +61,7 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.321"
-        app:srcCompat="@drawable/squat" />
+        app:srcCompat="@drawable/push_up" />
 
     <TextView
         android:id="@+id/textView"
@@ -103,7 +103,7 @@
         android:id="@+id/textView15"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Number of squats:"
+        android:text="Number of push-ups"
         android:textAlignment="center"
         android:textSize="18sp"
         app:layout_constraintBottom_toBottomOf="parent"

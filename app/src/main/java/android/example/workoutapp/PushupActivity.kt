@@ -182,9 +182,6 @@ class PushupActivity :  AppCompatActivity()
 
 
 
-
-
-
     private var musicmediaPlayer: MediaPlayer? = null
     private var voicemediaPlayer: MediaPlayer? = null
     private var countdown0: Boolean = false
@@ -247,6 +244,7 @@ class PushupActivity :  AppCompatActivity()
       }.start()
   }
 
+
   /** [CameraDevice.StateCallback] is called when [CameraDevice] changes its state.   */
   private val stateCallback = object : CameraDevice.StateCallback() {
 
@@ -261,10 +259,10 @@ class PushupActivity :  AppCompatActivity()
         val intent = Intent()
         intent.putExtra("message", "You did " + pushups.toString() + " Pushups!")
         this@PushupActivity.setResult(RESULT_OK, intent);
-        
         this@PushupActivity.finish()
       }
     }
+
 
 
     override fun onDisconnected(cameraDevice: CameraDevice) {

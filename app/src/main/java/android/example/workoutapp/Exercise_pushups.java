@@ -102,14 +102,20 @@ public class Exercise_pushups extends AppCompatActivity {
 
     public void onPause(){
         super.onPause();
-        musicmediaPlayer.pause();
+        if (musicmediaPlayer !=null) {
+            musicmediaPlayer.pause();
+        }
     }
     public void onDestroy(){
         super.onDestroy();
-        musicmediaPlayer.stop();
+        if (musicmediaPlayer !=null) {
+            musicmediaPlayer.stop();
+        }
     }
     public void onStart(){
         super.onStart();
-        musicmediaPlayer.start();
+        if (musicmediaPlayer !=null) {
+            musicmediaPlayer.start();
+        }
     }
 }

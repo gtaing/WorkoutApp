@@ -202,12 +202,14 @@ public class Exercise_plank extends AppCompatActivity{
     }
     public void onPause(){
         super.onPause();
-        musicmediaPlayer.pause();
+        if (musicmediaPlayer !=null) {
+            musicmediaPlayer.pause();
+        }
         countdowntimer.cancel();
     }
     public void onDestroy(){
         super.onDestroy();
-        musicmediaPlayer.stop();
+
         countdowntimer.cancel();
     }
     public void onStart(){

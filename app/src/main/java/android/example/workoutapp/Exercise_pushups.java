@@ -1,6 +1,7 @@
 package android.example.workoutapp;
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.widget.VideoView;
 import android.media.MediaPlayer;
@@ -9,11 +10,15 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.MediaController;
 
+import org.jetbrains.annotations.NotNull;
+
 public class Exercise_pushups extends AppCompatActivity {
     private VideoView videoView;
     private int position = 0;
     private MediaController mediaController;
     private Button buttonPlay;
+    private int musicfile = -1;
+    private MediaPlayer musicmediaPlayer;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -60,5 +65,51 @@ public class Exercise_pushups extends AppCompatActivity {
                 VideoViewUtils.playRawVideo(Exercise_pushups.this, videoView, resName);
             }
         });
+        //start music
+        //get music config
+        //get saved settings
+
+        SharedPreferences settings = getSharedPreferences("UserInfo", 0);
+        String set_music = settings.getString("music", "");
+
+        if (set_music.equals(getString(R.string.music1))){
+            musicfile = R.raw.linkin_park_in_the_end;
+
+        }
+        else if(set_music.equals(getString(R.string.music2))){
+            musicfile = R.raw.linkin_park_numb;
+
+        }
+        else if(set_music.equals(getString(R.string.music3))){
+            musicfile = R.raw.linkin_park_what_ive_done;
+
+        }
+        else if(set_music.equals(getString(R.string.nomusic))){
+            musicfile = -1;
+        }
+
+
+        if (musicfile != -1){
+            musicmediaPlayer = MediaPlayer.create(this, musicfile);
+            musicmediaPlayer.setOnPreparedListener(new MediaPlayer.OnPreparedListener() {
+                @Override
+                public void onPrepared(@NotNull MediaPlayer musicmediaPlayer) {
+                    musicmediaPlayer.start();
+                }
+            });
+        }
+    }
+
+    public void onPause(){
+        super.onPause();
+        musicmediaPlayer.pause();
+    }
+    public void onDestroy(){
+        super.onDestroy();
+        musicmediaPlayer.stop();
+    }
+    public void onStart(){
+        super.onStart();
+        musicmediaPlayer.start();
     }
 }

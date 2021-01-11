@@ -18,8 +18,7 @@ public class Exercise4ActivityDone extends AppCompatActivity {
         setContentView(R.layout.activity_exercise1_done);
         Bundle extras = getIntent().getExtras();
         int duration = Integer.parseInt(extras.getString("duration"));
-        int number = Integer.parseInt(extras.getString("number"));
-        int kcal = (int)(number * 0.5);
+        int kcal = (int)(duration * 0.1);
 
         ((TextView)findViewById(R.id.textView5)).setText("PLANK DONE");
 
@@ -30,13 +29,8 @@ public class Exercise4ActivityDone extends AppCompatActivity {
         else{
             ((TextView)findViewById(R.id.textView9)).setText("You just did " +  duration +" seconds"+ "of plank.");
         }
-        int average  = 0;
-        if (duration==0){
-            average = 0;
-        }else{
-            average = (60*number)/duration;
-        }
-        //((TextView)findViewById(R.id.textView14)).setText("That's "+ average +" jumping jacks per minute on average.");
+        //no overgae per minute becuase cannot be coutned
+        ((TextView)findViewById(R.id.textView14)).setText("");
         ((TextView)findViewById(R.id.textView11)).setText("You burned " +kcal+" kcal.\n");
 
         // Creation of the SharedPreferences
@@ -45,7 +39,7 @@ public class Exercise4ActivityDone extends AppCompatActivity {
         Button donebutton = (Button) findViewById(R.id.button);
         donebutton.setOnClickListener(view -> {
             SavingUserDataUtil obj = new SavingUserDataUtil();
-            obj.saveDataWorkout(view, duration, kcal, number, sharedPreferences);
+            obj.saveDataWorkout(view, duration, kcal, 0, sharedPreferences);
             openNewActivity();
         });
 

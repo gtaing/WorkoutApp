@@ -3,6 +3,7 @@ package android.example.workoutapp;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 
 import android.widget.EditText;
@@ -14,6 +15,8 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.MediaController;
 
+import org.jetbrains.annotations.NotNull;
+
 public class Exercise_squat extends AppCompatActivity  {
     private VideoView videoView;
     private int position = 0;
@@ -24,6 +27,8 @@ public class Exercise_squat extends AppCompatActivity  {
     private int jumpingjack_numberrequired = 0;
     private long starttime = 0L;
     private int program_duration = 0;
+    private int musicfile = -1;
+    private MediaPlayer musicmediaPlayer;
 
 
 
@@ -43,6 +48,10 @@ public class Exercise_squat extends AppCompatActivity  {
 
 
             ((TextView)findViewById(R.id.textView17)).setText("Do " + squat_numberrequired + " Squats.");
+        }else{
+            squat_numberrequired = 20;
+            ((TextView)findViewById(R.id.textView17)).setText("Do " + squat_numberrequired + " Squats.");
+
         }
 
 
@@ -93,7 +102,39 @@ public class Exercise_squat extends AppCompatActivity  {
                 openNewActivity();
             }
         });
+        //start music
+        //get music config
+        //get saved settings
 
+        SharedPreferences settings = getSharedPreferences("UserInfo", 0);
+        String set_music = settings.getString("music", "");
+
+        if (set_music.equals(getString(R.string.music1))){
+            musicfile = R.raw.linkin_park_in_the_end;
+
+        }
+        else if(set_music.equals(getString(R.string.music2))){
+            musicfile = R.raw.linkin_park_numb;
+
+        }
+        else if(set_music.equals(getString(R.string.music3))){
+            musicfile = R.raw.linkin_park_what_ive_done;
+
+        }
+        else if(set_music.equals(getString(R.string.nomusic))){
+            musicfile = -1;
+        }
+
+
+        if (musicfile != -1){
+            musicmediaPlayer = MediaPlayer.create(this, musicfile);
+            musicmediaPlayer.setOnPreparedListener(new MediaPlayer.OnPreparedListener() {
+                @Override
+                public void onPrepared(@NotNull MediaPlayer musicmediaPlayer) {
+                    musicmediaPlayer.start();
+                }
+            });
+        }
         //starttime
         starttime = (Long)(System.currentTimeMillis() / 1000);
     }
@@ -113,12 +154,23 @@ public class Exercise_squat extends AppCompatActivity  {
         }
         else{
             ////go to list of exercises
-            Intent intent = new Intent(this, ListExercisesActivity.class);
+            Intent intent = new Intent(this, Exercise2ActivityDone.class);
             intent.putExtra("number", String.valueOf(squat_numberrequired));
             intent.putExtra("duration", String.valueOf(duration));
             startActivity(intent);
         }
     }
-
+    public void onPause(){
+        super.onPause();
+        musicmediaPlayer.pause();
+    }
+    public void onDestroy(){
+        super.onDestroy();
+        musicmediaPlayer.stop();
+    }
+    public void onStart(){
+        super.onStart();
+        musicmediaPlayer.start();
+    }
 
 }

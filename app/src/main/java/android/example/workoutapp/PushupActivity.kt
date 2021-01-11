@@ -22,7 +22,6 @@ import android.app.Dialog
 import android.content.Context
 import android.content.Intent
 import android.content.pm.PackageManager
-import android.example.workoutapp.databinding.ActivityExercise1DoneBinding
 import android.graphics.*
 import android.hardware.camera2.*
 import android.media.Image
@@ -42,7 +41,7 @@ import android.view.View
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.content.ContextCompat
 import androidx.fragment.app.DialogFragment
-import kotlinx.android.synthetic.main.activity_working_out.*
+import kotlinx.android.synthetic.main.activity_posenet_workout.*
 import org.apache.commons.math3.stat.descriptive.SummaryStatistics
 import org.tensorflow.lite.examples.posenet.lib.BodyPart
 import org.tensorflow.lite.examples.posenet.lib.Person
@@ -194,12 +193,25 @@ class PushupActivity :  AppCompatActivity()
 
     private var musicfile: Int = -1
 
+
+    private var partOfProgramm = false
+    private var pushups_numberrequired = 0
+    private var plank_durationreequired = 0
+
     override fun onCreate(savedInstanceState: Bundle?) {
-
     super.onCreate(savedInstanceState)
+    setContentView(R.layout.activity_posenet_workout)
 
-    Log.d("PushupActivity Started","PushupActivity Started")
-    setContentView(R.layout.activity_working_out)
+
+      val extras = intent.extras
+      val partOfProgramString = extras!!.getString("partOfProgram")
+      if (partOfProgramString == "yes") {
+        partOfProgramm = true
+        pushups_numberrequired = extras.getString("pushups_numberrequired")!!.toInt()
+        plank_durationreequired = extras.getString("plank_durationreequired")!!.toInt()
+      } else {
+        pushups_numberrequired = 20
+      }
 
 
     //start music
@@ -253,7 +265,42 @@ class PushupActivity :  AppCompatActivity()
 
       (countdowntimer as CountDownTimer).start()
   }
+  private fun triggerFinish(){
+    (countdowntimer as CountDownTimer).cancel()
 
+
+    var endtime:Long = (System.currentTimeMillis() / 1000).toInt().toLong()
+    var duration = endtime - starttime - pauseduration
+
+    if (!countdown0){
+      duration = 0
+      pushups = 0
+    }
+
+    // connecting this main activity with the second activity and passing a string
+
+    if (partOfProgramm) {
+      //go to squats now
+      val intent = Intent(this, Exercise_plank::class.java)
+      intent.putExtra("partOfProgram", "yes")
+      intent.putExtra("pushups_numberrequired", pushups_numberrequired.toString())
+      intent.putExtra("plank_durationreequired", plank_durationreequired.toString())
+      intent.putExtra("programduration", duration.toString())
+      startActivity(intent)
+    } else {
+      ////go to list of exercises
+      var intent = Intent(this@PushupActivity, Exercise1ActivityDone::class.java)
+      intent.putExtra("number", pushups.toString())
+      intent.putExtra("duration", duration.toString())
+      startActivity(intent)
+    }
+
+
+
+
+    this@PushupActivity.finish()
+
+  }
 
   /** [CameraDevice.StateCallback] is called when [CameraDevice] changes its state.   */
   private val stateCallback = object : CameraDevice.StateCallback() {
@@ -268,23 +315,7 @@ class PushupActivity :  AppCompatActivity()
       backbutton.setOnClickListener {
 
 
-        (countdowntimer as CountDownTimer).cancel()
-
-
-        var endtime:Long = (System.currentTimeMillis() / 1000).toInt().toLong()
-        var duration = endtime - starttime - pauseduration
-
-        if (!countdown0){
-          duration = 0
-          pushups = 0
-        }
-
-        // connecting this main activity with the second activity and passing a string
-        var intent = Intent(this@PushupActivity, Exercise1ActivityDone::class.java)
-        intent.putExtra("number", pushups.toString())
-        intent.putExtra("duration", duration.toString())
-        startActivity(intent)
-        this@PushupActivity.finish()
+        triggerFinish()
       }
     }
 
@@ -706,7 +737,12 @@ class PushupActivity :  AppCompatActivity()
         }
       }
 
-      textView8.setText("Pushups: " + pushups.toString())
+      textView8.setText("Pushups: " + pushups.toString() + " of " + pushups_numberrequired)
+
+      //check if done
+      if (pushups>= pushups_numberrequired){
+        triggerFinish()
+      }
     }
 
 

@@ -1,5 +1,6 @@
 package android.example.workoutapp;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.widget.EditText;
 import android.widget.TextView;
@@ -12,6 +13,8 @@ import android.widget.MediaController;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import org.jetbrains.annotations.NotNull;
+
 public class Exercise_jumpingjack extends AppCompatActivity {
     private VideoView videoView;
     private int position = 0;
@@ -21,6 +24,9 @@ public class Exercise_jumpingjack extends AppCompatActivity {
     private int jumpingjack_numberrequired = 0;
     private int squat_numberrequired = 0;
     private long starttime = 0L;
+    private int musicfile = -1;
+    private MediaPlayer musicmediaPlayer;
+
 
 
     @Override
@@ -94,6 +100,42 @@ public class Exercise_jumpingjack extends AppCompatActivity {
             }
         });
 
+
+        //start music
+        //get music config
+        //get saved settings
+
+        SharedPreferences settings = getSharedPreferences("UserInfo", 0);
+        String set_music = settings.getString("music", "");
+
+        if (set_music.equals(getString(R.string.music1))){
+            musicfile = R.raw.linkin_park_in_the_end;
+
+        }
+        else if(set_music.equals(getString(R.string.music2))){
+            musicfile = R.raw.linkin_park_numb;
+
+        }
+        else if(set_music.equals(getString(R.string.music3))){
+            musicfile = R.raw.linkin_park_what_ive_done;
+
+        }
+        else if(set_music.equals(getString(R.string.nomusic))){
+            musicfile = -1;
+        }
+
+
+        if (musicfile != -1){
+            musicmediaPlayer = MediaPlayer.create(this, musicfile);
+            musicmediaPlayer.setOnPreparedListener(new MediaPlayer.OnPreparedListener() {
+                @Override
+                public void onPrepared(@NotNull MediaPlayer musicmediaPlayer) {
+                    musicmediaPlayer.start();
+                }
+            });
+        }
+
+
     //starttime
     starttime = (Long)(System.currentTimeMillis() / 1000);
     }
@@ -115,12 +157,26 @@ public class Exercise_jumpingjack extends AppCompatActivity {
         }
         else{
             ////go to list of exercises
-            Intent intent = new Intent(this, ListExercisesActivity.class);
+            Intent intent = new Intent(this, Exercise3ActivityDone.class);
             intent.putExtra("number", String.valueOf(jumpingjack_numberrequired));
             intent.putExtra("duration", String.valueOf(duration));
             startActivity(intent);
         }
     }
+
+    public void onPause(){
+        super.onPause();
+        musicmediaPlayer.pause();
+    }
+    public void onDestroy(){
+        super.onDestroy();
+        musicmediaPlayer.stop();
+    }
+    public void onStart(){
+        super.onStart();
+        musicmediaPlayer.start();
+    }
+
 }
 
 

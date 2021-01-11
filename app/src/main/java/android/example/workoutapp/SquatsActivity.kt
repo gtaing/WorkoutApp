@@ -41,7 +41,7 @@ import android.view.View
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.content.ContextCompat
 import androidx.fragment.app.DialogFragment
-import kotlinx.android.synthetic.main.activity_working_out.*
+import kotlinx.android.synthetic.main.activity_posenet_workout.*
 import org.apache.commons.math3.stat.descriptive.SummaryStatistics
 import org.tensorflow.lite.examples.posenet.lib.BodyPart
 import org.tensorflow.lite.examples.posenet.lib.Person
@@ -196,7 +196,7 @@ class SquatsActivity :  AppCompatActivity()
 
     super.onCreate(savedInstanceState)
 
-    setContentView(R.layout.activity_working_out)
+    setContentView(R.layout.activity_posenet_workout)
 
 
     //start music

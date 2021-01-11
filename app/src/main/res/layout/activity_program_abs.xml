@@ -13,7 +13,7 @@
         android:id="@+id/textView16"
         android:layout_width="149dp"
         android:layout_height="49dp"
-        android:text="Time (minutes) doing plank"
+        android:text="Time (seconds) doing plank"
         android:textAlignment="center"
         android:textSize="18sp"
         app:layout_constraintBottom_toBottomOf="parent"

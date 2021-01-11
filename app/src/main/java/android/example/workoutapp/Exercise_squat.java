@@ -5,6 +5,8 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.content.Intent;
 import android.os.Bundle;
 
+import android.widget.EditText;
+import android.widget.TextView;
 import android.widget.VideoView;
 import android.media.MediaPlayer;
 import android.media.MediaPlayer.OnPreparedListener;
@@ -17,11 +19,33 @@ public class Exercise_squat extends AppCompatActivity  {
     private int position = 0;
     private MediaController mediaController;
     private Button buttonPlay;
+    private boolean partOfProgramm = false;
+    private int squat_numberrequired = 0;
+    private int jumpingjack_numberrequired = 0;
+    private long starttime = 0L;
+    private int program_duration = 0;
+
+
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_exercise_video);
+
+        Bundle extras = getIntent().getExtras();
+        String partOfProgramString = extras.getString("partOfProgram");
+        if (partOfProgramString=="yes"){
+            partOfProgramm = true;
+            squat_numberrequired = Integer.parseInt(extras.getString("squat_numberrequired"));
+            jumpingjack_numberrequired = Integer.parseInt(extras.getString("jumpingjack_numberrequired"));
+            program_duration = Integer.parseInt(extras.getString("programduration"));
+
+
+            ((TextView)findViewById(R.id.textView17)).setText("Do " + squat_numberrequired + " Squats.");
+        }
+
+
         this.videoView = (VideoView) findViewById(R.id.videoView);
         buttonPlay = (Button) findViewById(R.id.buttonPlay);
         // Set the media controller buttons
@@ -63,6 +87,32 @@ public class Exercise_squat extends AppCompatActivity  {
                 VideoViewUtils.playRawVideo(Exercise_squat.this, videoView, resName);
             }
         });
+
+        //starttime
+        starttime = (Long)(System.currentTimeMillis() / 1000);
+    }
+
+    public void openNewActivity(){
+        long endtime =  (Long)(System.currentTimeMillis() / 1000);
+        //duration in seconds
+        long duration = endtime - starttime;
+        //int programduration = ((int)duration) +
+        if (partOfProgramm){
+            //go to squats now
+            Intent intent = new Intent(this, Program1Done.class);
+            intent.putExtra("squat_numberrequired", String.valueOf(squat_numberrequired));
+            intent.putExtra("jumpingjack_numberrequired", String.valueOf(jumpingjack_numberrequired));
+            intent.putExtra("programduration", String.valueOf(jumpingjack_numberrequired));
+
+            startActivity(intent);
+        }
+        else{
+            ////go to list of exercises
+            Intent intent = new Intent(this, ListExercisesActivity.class);
+            intent.putExtra("number", String.valueOf(squat_numberrequired));
+            intent.putExtra("duration", String.valueOf(duration));
+            startActivity(intent);
+        }
     }
 
 

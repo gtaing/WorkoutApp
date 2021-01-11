@@ -1,5 +1,8 @@
 package android.example.workoutapp;
+import android.content.Intent;
 import android.os.Bundle;
+import android.widget.EditText;
+import android.widget.TextView;
 import android.widget.VideoView;
 import android.media.MediaPlayer;
 import android.media.MediaPlayer.OnPreparedListener;
@@ -14,11 +17,34 @@ public class Exercise_jumpingjack extends AppCompatActivity {
     private int position = 0;
     private MediaController mediaController;
     private Button buttonPlay;
+    private boolean partOfProgramm = false;
+    private int jumpingjack_numberrequired = 0;
+    private int squat_numberrequired = 0;
+    private long starttime = 0L;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_exercise_video);
+
+        Bundle extras = getIntent().getExtras();
+        String partOfProgramString = extras.getString("partOfProgram");
+        if (partOfProgramString=="yes"){
+            partOfProgramm = true;
+            jumpingjack_numberrequired = Integer.parseInt(extras.getString("jumpingjack_numberrequired"));
+            squat_numberrequired = Integer.parseInt(extras.getString("jumpingjack_numberrequired"));
+
+            ((TextView)findViewById(R.id.textView17)).setText("Do " + jumpingjack_numberrequired + " jumping Jacks.");
+
+        }else{
+            jumpingjack_numberrequired = 20;
+            ((TextView)findViewById(R.id.textView17)).setText("Do " + jumpingjack_numberrequired + " jumping Jacks.");
+
+        }
+
+
+
         this.videoView = (VideoView) findViewById(R.id.videoView);
         buttonPlay = (Button) findViewById(R.id.buttonPlay);
         // Set the media controller buttons
@@ -60,5 +86,42 @@ public class Exercise_jumpingjack extends AppCompatActivity {
                 VideoViewUtils.playRawVideo(Exercise_jumpingjack.this, videoView, resName);
             }
         });
+
+        ((Button) findViewById(R.id.buttonStop)).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                openNewActivity();
+            }
+        });
+
+    //starttime
+    starttime = (Long)(System.currentTimeMillis() / 1000);
+    }
+
+    public void openNewActivity(){
+        long endtime =  (Long)(System.currentTimeMillis() / 1000);
+        //duration in seconds
+        long duration = endtime - starttime;
+
+        if (partOfProgramm){
+            //go to squats now
+            Intent intent = new Intent(this, SquatsActivity.class);
+            intent.putExtra("partOfProgram", "yes");
+            intent.putExtra("squat_numberrequired", String.valueOf(squat_numberrequired));
+            intent.putExtra("jumpingjack_numberrequired", String.valueOf(jumpingjack_numberrequired));
+            intent.putExtra("programduration", String.valueOf(duration));
+
+
+            startActivity(intent);
+        }
+        else{
+            ////go to list of exercises
+            Intent intent = new Intent(this, ListExercisesActivity.class);
+            intent.putExtra("number", String.valueOf(jumpingjack_numberrequired));
+            intent.putExtra("duration", String.valueOf(duration));
+            startActivity(intent);
+        }
     }
 }
+
+

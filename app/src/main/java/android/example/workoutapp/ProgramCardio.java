@@ -19,8 +19,7 @@ public class ProgramCardio extends AppCompatActivity {
         startjumpingjack.setOnClickListener(view -> openNewActivity());
     }
     public void openNewActivity() {
-        //Intent intent = new Intent(this, CameraActivity.class);
-        Intent intent = new Intent(this, Exercise_plank.class);
+        Intent intent = new Intent(this, Exercise_jumpingjack.class);
         intent.putExtra("partOfProgram", "yes");
         intent.putExtra("jumpingjack_numberrequired", ((EditText)findViewById(R.id.editTextNumber2)).getText().toString());
         intent.putExtra("squat_numberrequired", ((EditText)findViewById(R.id.editTextNumber)).getText().toString());

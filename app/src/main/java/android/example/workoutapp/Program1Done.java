@@ -3,31 +3,34 @@ package android.example.workoutapp;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
-import android.view.View;
 import android.widget.Button;
-import android.widget.ImageButton;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
 
-public class Exercise1ActivityDone extends AppCompatActivity {
+public class Program1Done extends AppCompatActivity {
     SharedPreferences sharedPreferences;
     int duration;
     int number;
     int kcal;
+    private int squat_numberrequired;
+    private int jumpingjack_numberrequired;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_exercise1_done);
         Bundle extras = getIntent().getExtras();
-        duration = Integer.parseInt(extras.getString("duration"));
-        number = Integer.parseInt(extras.getString("number"));
-        kcal = (int)(number * 0.5);
+        squat_numberrequired = Integer.parseInt(extras.getString("squat_numberrequired"));
+        jumpingjack_numberrequired = Integer.parseInt(extras.getString("jumpingjack_numberrequired"));
+
+        kcal = (int)(squat_numberrequired * 0.3 + (jumpingjack_numberrequired * 0.2));
+
+        ((TextView)findViewById(R.id.textView5)).setText("CARDIO PROGRAM DONE");
 
         if (duration > 59){
-            ((TextView)findViewById(R.id.textView9)).setText("You just did " + number + " push-ups in " +
+            ((TextView)findViewById(R.id.textView9)).setText("You just did " + jumpingjack_numberrequired + " jumping jacks and "+
+                    squat_numberrequired  +" in " +
                     (int)(duration/60) +" Minutes and " + duration%60 +" seconds.");
         }
         else{
@@ -39,7 +42,7 @@ public class Exercise1ActivityDone extends AppCompatActivity {
         }else{
             average = (60*number)/duration;
         }
-        ((TextView)findViewById(R.id.textView14)).setText("That's "+ average +" pushups per minute on average.");
+        ((TextView)findViewById(R.id.textView14)).setText("");
         ((TextView)findViewById(R.id.textView11)).setText("You burned " +kcal+" kcal.\n");
 
         // Creation of the SharedPreferences

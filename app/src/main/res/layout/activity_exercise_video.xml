@@ -55,7 +55,7 @@
         android:layout_width="266dp"
         android:layout_height="119dp"
         android:layout_marginBottom="76dp"
-        android:text="Your turn now ! \n Try to follow the exercise as shown in the video ! :D"
+        android:text="Your turn now! \n Try to do like in the video!"
         android:textAlignment="center"
         android:textSize="22sp"
         android:textStyle="bold"

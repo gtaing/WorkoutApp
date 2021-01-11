@@ -86,7 +86,7 @@
         android:id="@+id/caloriesTextID"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Calories per \nsecond of squat"
+        android:text="Calories per \nsecond of plank"
         android:textColor="#1C1818"
         android:textSize="18sp"
         app:layout_constraintBottom_toBottomOf="parent"

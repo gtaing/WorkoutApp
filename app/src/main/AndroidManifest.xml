@@ -61,11 +61,8 @@
         <activity android:name=".ProgramCardio"></activity>
         <activity android:name=".ProgramAbs"></activity>
 
-
-
-
-
-
+        <activity android:name=".Program1Done"></activity>
+        <activity android:name=".Program2Done"></activity>
 
 
         <activity android:name=".PreferencesActivity"

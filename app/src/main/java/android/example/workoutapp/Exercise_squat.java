@@ -35,7 +35,7 @@ public class Exercise_squat extends AppCompatActivity  {
 
         Bundle extras = getIntent().getExtras();
         String partOfProgramString = extras.getString("partOfProgram");
-        if (partOfProgramString=="yes"){
+        if (partOfProgramString.equals("yes")){
             partOfProgramm = true;
             squat_numberrequired = Integer.parseInt(extras.getString("squat_numberrequired"));
             jumpingjack_numberrequired = Integer.parseInt(extras.getString("jumpingjack_numberrequired"));
@@ -87,6 +87,12 @@ public class Exercise_squat extends AppCompatActivity  {
                 VideoViewUtils.playRawVideo(Exercise_squat.this, videoView, resName);
             }
         });
+        ((Button) findViewById(R.id.buttonStop)).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                openNewActivity();
+            }
+        });
 
         //starttime
         starttime = (Long)(System.currentTimeMillis() / 1000);
@@ -96,14 +102,13 @@ public class Exercise_squat extends AppCompatActivity  {
         long endtime =  (Long)(System.currentTimeMillis() / 1000);
         //duration in seconds
         long duration = endtime - starttime;
-        //int programduration = ((int)duration) +
+        program_duration += (int)duration;
         if (partOfProgramm){
             //go to squats now
             Intent intent = new Intent(this, Program1Done.class);
             intent.putExtra("squat_numberrequired", String.valueOf(squat_numberrequired));
             intent.putExtra("jumpingjack_numberrequired", String.valueOf(jumpingjack_numberrequired));
-            intent.putExtra("programduration", String.valueOf(jumpingjack_numberrequired));
-
+            intent.putExtra("programduration", String.valueOf(program_duration));
             startActivity(intent);
         }
         else{

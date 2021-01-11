@@ -30,7 +30,7 @@ public class Exercise_jumpingjack extends AppCompatActivity {
 
         Bundle extras = getIntent().getExtras();
         String partOfProgramString = extras.getString("partOfProgram");
-        if (partOfProgramString=="yes"){
+        if (partOfProgramString.equals("yes")){
             partOfProgramm = true;
             jumpingjack_numberrequired = Integer.parseInt(extras.getString("jumpingjack_numberrequired"));
             squat_numberrequired = Integer.parseInt(extras.getString("jumpingjack_numberrequired"));
@@ -105,12 +105,11 @@ public class Exercise_jumpingjack extends AppCompatActivity {
 
         if (partOfProgramm){
             //go to squats now
-            Intent intent = new Intent(this, SquatsActivity.class);
+            Intent intent = new Intent(this, Exercise_squat.class);
             intent.putExtra("partOfProgram", "yes");
             intent.putExtra("squat_numberrequired", String.valueOf(squat_numberrequired));
             intent.putExtra("jumpingjack_numberrequired", String.valueOf(jumpingjack_numberrequired));
             intent.putExtra("programduration", String.valueOf(duration));
-
 
             startActivity(intent);
         }

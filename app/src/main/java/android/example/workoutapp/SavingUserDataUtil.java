@@ -15,7 +15,7 @@ public class SavingUserDataUtil {
 
         String newDuration = String.valueOf(duration + Integer.valueOf(sharedPreferences.getString("duration", "0")));
         String newKcal = String.valueOf(kcal + Integer.valueOf(sharedPreferences.getString("kcal", "0")));
-        String newNumber = String.valueOf(number + Integer.valueOf(sharedPreferences.getString("numberWorkout", "0")));
+        String newNumber = String.valueOf(1 + Integer.valueOf(sharedPreferences.getString("numberWorkout", "0")));
 
         editor.putString("duration", newDuration);
         editor.putString("kcal", newKcal);

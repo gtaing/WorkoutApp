@@ -28,7 +28,7 @@
         android:layout_width="415dp"
         android:layout_height="132dp"
         android:gravity="center"
-        android:text="JUMPING JACKS / SQUATS"
+        android:text="PUSH-UPS / PLANK"
         android:textColor="#E66666"
         android:textSize="36sp"
         android:textStyle="bold"

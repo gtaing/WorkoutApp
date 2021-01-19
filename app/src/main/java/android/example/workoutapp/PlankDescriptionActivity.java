@@ -16,8 +16,6 @@ public class PlankDescriptionActivity extends AppCompatActivity {
 
         startplank = findViewById(R.id.playButton);
         startplank.setOnClickListener(view -> openNewActivity());
-
-
     }
 
     public void openNewActivity() {
